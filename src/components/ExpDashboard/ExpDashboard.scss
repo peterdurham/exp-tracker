@@ -1,0 +1,21 @@
+.ExpDashboard {
+
+    &__status {
+        display: flex;
+        width: 100rem;
+        margin: 0 auto;
+    }
+    &__link {
+        text-decoration: none;
+        color: green;
+        font-size: 3rem;
+        padding: 2rem;
+    }
+    &__selected {
+        border: 5px solid blue;
+    }
+    &__menulink {
+        text-decoration: none;
+        color: red;
+    }
+}

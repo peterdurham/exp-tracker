@@ -33,7 +33,7 @@ import desert from '../../../assets/images/nature/desert.png';
 
 import FavoritesIcon from '../../FavoritesIcon/FavoritesIcon';
 
-const UserProfile = ({switchActiveUser, name, favoriteFood, favoriteActivity, favoriteNature, profileImage }) => {
+const UserProfile = ({switchActiveUser, name, favoriteFood, favoriteActivity, favoriteNature, profileImage, index, selectProfile, optionSelected }) => {
     let profile;
     let food; 
     let activity;
@@ -92,22 +92,37 @@ const UserProfile = ({switchActiveUser, name, favoriteFood, favoriteActivity, fa
     } else if(favoriteNature==='desert') {
         nature = <img className="UserProfile__icon" src={desert} alt="desert" />
     }
+
+    
+    
+
     return(
         
-            <Link 
-                key={name}
-                className="UserProfile"
-                onClick={() => switchActiveUser(name)}
-                to="/exp">
+            <>
+                {name!=='empty' ? <Link 
+                    key={name}
+                    className={optionSelected === index ? "UserProfile UserProfile__selected" : "UserProfile"}
+                    onMouseOver={() => selectProfile(index)}
+                    onClick={() => switchActiveUser(name)}
+                    to="/exp">
 
-                <div className="UserProfile__name">{name}</div>
-                {profile}
+                    <div className="UserProfile__name">{name}</div>
+                    {profile}
                 
-                <div className="UserProfile__favorites">
-                     {food}{activity}{nature}
-                </div>
+                    <div className="UserProfile__favorites">
+                        {food}{activity}{nature}
+                    </div>
                         
-            </Link>
+                </Link> : <div className="UserProfile" 
+                    onMouseOver={() => selectProfile(index)}
+                    className={optionSelected === index ? "UserProfile UserProfile__disabled" : "UserProfile"}
+                    >empty</div>
+                
+                }
+                
+            
+            </>
+            
         
     );
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 
 import './MainMenu.scss';
@@ -7,15 +7,20 @@ import './MainMenu.scss';
 class MainMenu extends Component {
     state = {
         optionSelected: 'newProfile',
+        
     }
 
 
     highlightOption = (option) => {
         this.setState(() => ({ optionSelected: option }))
     }
+    
+    
+
     keyPress = (key) => {
         const optionSelected = this.state.optionSelected;
         let newOption;
+        
         if(key==='up' && optionSelected === 'newProfile') {
             newOption = 'newProfile'
         } else if(key==='up' && optionSelected === 'continue') {
@@ -28,7 +33,13 @@ class MainMenu extends Component {
             newOption = 'switchUser'
         } else if(key==='down' && optionSelected === 'switchUser') {
             newOption = 'switchUser'
-        }
+        } else if(key==='enter' && optionSelected === 'newProfile') {
+            this.props.history.push('/create-profile');
+        } else if(key==='enter' && optionSelected === 'continue') {
+            this.props.history.push('/exp');
+        } else if(key==='enter' && optionSelected === 'switchUser') {
+            this.props.history.push('/switch-user');
+        } 
         this.setState(() => ({ optionSelected: newOption }))
         
     }
@@ -36,10 +47,13 @@ class MainMenu extends Component {
 
     render() {
         const { activeUser, switchUser } = this.props;
+        
+        
+        
         return (
             <div className="Menu">
                 <KeyboardEventHandler 
-                    handleKeys={['up', 'down']}
+                    handleKeys={['up', 'down', 'enter']}
                     onKeyEvent={(key, e) => this.keyPress(key)}
                 />
                 

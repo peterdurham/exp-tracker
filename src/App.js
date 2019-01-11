@@ -44,26 +44,37 @@ class App extends Component {
 
   }
   componentDidUpdate(prevProps, prevState){
-    if (prevState.users.length !== this.state.users.length || prevState.activeUser !== this.state.activeUser) {
+    if (prevState.users.length !== this.state.users.length || prevState.activeUser !== this.state.activeUser ) {
         const jsonUsers = JSON.stringify(this.state.users);
         localStorage.setItem('users', jsonUsers);
         const jsonActive = JSON.stringify(this.state.activeUser);
         localStorage.setItem('active', jsonActive);
       } 
+    if(this.state.users.length > 0){
+      if (prevState.users.length !== this.state.users.length || prevState.activeUser !== this.state.activeUser || prevState.activeUser.tasksCompleted.length !== this.state.activeUser.tasksCompleted.length) {
+        const jsonUsers = JSON.stringify(this.state.users);
+        localStorage.setItem('users', jsonUsers);
+        const jsonActive = JSON.stringify(this.state.activeUser);
+        localStorage.setItem('active', jsonActive);
+      } 
+    }
   }
   createNewProfileHandler = () => {
-    const user = {
-      name: this.state.nameInput,
-      favoriteFood: this.state.favoritesSelected.food,
-      favoriteActivity: this.state.favoritesSelected.activity,
-      favoriteNature: this.state.favoritesSelected.nature,
-      profileImage: this.state.favoritesSelected.image,
-      tasksCompleted: [],
-      exp: 0,
+    if(this.state.users.length < 3) {
+      const user = {
+        name: this.state.nameInput,
+        favoriteFood: this.state.favoritesSelected.food,
+        favoriteActivity: this.state.favoritesSelected.activity,
+        favoriteNature: this.state.favoritesSelected.nature,
+        profileImage: this.state.favoritesSelected.image,
+        tasksCompleted: [],
+        exp: 0,
+      }
+      const users = [...this.state.users];
+      users.push(user);
+      this.setState(() => ({ activeUser: user, users, creatingProfile: false }))
     }
-    const users = [...this.state.users];
-    users.push(user);
-    this.setState(() => ({ activeUser: user, users, creatingProfile: false }))
+    
   }
   
   bindNameInputHandler = (event) => {
@@ -77,12 +88,11 @@ class App extends Component {
   }
   switchActiveUserHandler = (userName) => {
     let users = [...this.state.users];
-    let activeUser = users.filter((user) => user.name === userName)[0];
-    this.setState(() => ({activeUser}))
+    let newActiveUser = users.filter((user) => user.name === userName)[0];
+    this.setState(() => ({activeUser: newActiveUser }))
   }
   calculateExpHandler = (taskName) => {
     let exp;
-    console.log(taskName);
     if(taskName === 'journalling' || taskName === 'meditation' || taskName === 'brushteeth' || taskName === 'read' || taskName === 'paybills') {
       exp = Math.floor(Math.random() * 11 + 20);
     } else if(taskName === 'coding' || taskName === 'socialize' || taskName === 'paybills' || taskName === 'meetup' || taskName === 'pairprogramming' || taskName === 'plannewproject' || taskName === 'deployproject' || taskName === 'running' || taskName==='cookfood'){
@@ -107,7 +117,20 @@ class App extends Component {
       tasksCompleted,
       exp,
     }
-    this.setState(() => ({ activeUser }))
+
+    let users = [...this.state.users];
+    
+    let updatedUsers = users.map((user) => {
+      if(user.name === activeUser.name){
+        
+        return activeUser;
+      } else {
+        return user
+      }
+    })
+    
+
+    this.setState(() => ({ activeUser, users: updatedUsers }))
     
   }
 

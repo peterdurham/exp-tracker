@@ -1,58 +1,81 @@
-.create {
+.CreateProfile {
     z-index: 1000;
     position: absolute;
     background: url('../../assets/images/createProfileBackground.jpg');
     background-size: cover;
     width: 100%;
     height: 1000px;
-
+    &__container {
+        width:100rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &__main {
+        background-color: rgba(22,22,22,.9);
+        margin-top:-1rem;
+        height:80rem;
+        padding-top: 1rem;
+        
+        &--text {
+            color: white;
+            font-size: 4rem;
+        }
+        &--subtext {
+            color: white;
+        }
+    }
+    &__selected {
+        border: 3px solid blue;
+    }
     &__input {
-        height: 80px;
-        width: 400px;
-        font-size: 50px;
+        height: 6rem;
+        width: 40rem;
+        font-size: 5rem;
     }
     &__button {
         padding: 5px 10px;
-        font-size: 20px;
+        font-size: 2rem;
+    }
+    &__label {
+        color: white;
+        font-size: 2.4rem;
+        border-top:1px solid gold;
+        border-bottom: 1px solid gold;
+        margin: 0 10rem;
+    }
+    &__foods {
+        display: flex;
+        justify-content: center;
+        img {
+            width: 100px;
+            height:100px;
+        }
+    }
+    &__activities {
+        display: flex;
+        justify-content: center;
+        img {
+            width: 100px;
+            height:100px;
+        }
+    }
+    &__natures {
+        display: flex;
+        justify-content: center;
+        img {
+            width: 100px;
+            height:100px;
+        }
     }
 }
-.profile-images {
 
-}
 .profile-image {
-    width: 200px;
-    height: 280px;
+    width: 15rem;
+    height: 20rem;
 }
 
-.option-label {
-    color: white;
-    font-size: 40px;
-}
-.foods {
-    display: flex;
-    justify-content: center;
-    img {
-        width: 100px;
-        height:100px;
-    }
-}
 
-.activities {
-    display: flex;
-    justify-content: center;
-    img {
-        width: 100px;
-        height:100px;
-    }
-}
-.natures {
-    display: flex;
-    justify-content: center;
-    img {
-        width: 100px;
-        height:100px;
-    }
-}
+
 .option-selected {
     border: 3px solid red;
 }

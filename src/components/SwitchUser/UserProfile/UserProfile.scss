@@ -23,7 +23,12 @@
         width:50px;
         height:50px;
     }
-    
+    &__selected {
+        border: 1px solid white;
+    }
+    &__disabled {
+        border: 1px solid grey;
+    }
 }
 .UserProfile:not(:last-child) {
     margin-right: 4rem;

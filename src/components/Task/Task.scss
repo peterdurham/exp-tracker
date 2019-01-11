@@ -12,4 +12,7 @@
         width: 8rem;
         margin: 0 auto;
     }
+    &__selected {
+        border: 4px solid blue;
+    }
 }
