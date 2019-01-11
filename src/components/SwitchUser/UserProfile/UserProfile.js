@@ -31,7 +31,6 @@ import sky from '../../../assets/images/nature/sky.png';
 import volcano from '../../../assets/images/nature/volcano.png';
 import desert from '../../../assets/images/nature/desert.png';
 
-import FavoritesIcon from '../../FavoritesIcon/FavoritesIcon';
 
 const UserProfile = ({switchActiveUser, name, favoriteFood, favoriteActivity, favoriteNature, profileImage, index, selectProfile, optionSelected }) => {
     let profile;
@@ -113,9 +112,8 @@ const UserProfile = ({switchActiveUser, name, favoriteFood, favoriteActivity, fa
                         {food}{activity}{nature}
                     </div>
                         
-                </Link> : <div className="UserProfile" 
+                </Link> : <div className={optionSelected === index ? "UserProfile UserProfile__disabled" : "UserProfile"} 
                     onMouseOver={() => selectProfile(index)}
-                    className={optionSelected === index ? "UserProfile UserProfile__disabled" : "UserProfile"}
                     >empty</div>
                 
                 }

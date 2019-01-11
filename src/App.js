@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router,
   Route,
-  Switch,
-  Link,
 } from 'react-router-dom';
 
 import './assets/sass/main.scss';
 
-import Header from './components/Header/Header';
+
 import MainMenu from './components/MainMenu/MainMenu';
-import Status from './components/Status/Status';
-import Navigation from './components/Navigation/Navigation';
 import CreateProfile from './components/CreateProfile/CreateProfile';
-import Task from './components/Task/Task';
 import SwitchUser from './components/SwitchUser/SwitchUser';
 import ExpDashboard from './components/ExpDashboard/ExpDashboard';
 
@@ -104,18 +99,45 @@ class App extends Component {
     }
     return exp;
   }
+  calculateLevelHandler = (exp) => {
+    let level = 0;
+    let percentage = 0;
+    if(exp <500) {
+      level = 1;
+      percentage = (exp/500)*100;
+    } else if(exp >= 500 && exp < 1500){
+      level = 2;
+      percentage = ((exp-500)/1000)*100;
+    } else if (exp >= 1500 && exp < 3000) {
+      level = 3;
+      percentage = ((exp-1500)/1500)*100;
+    } else if (exp >= 3000 && exp < 5000) {
+      level = 4;
+      percentage = ((exp-3000)/2000)*100;
+    } else if (exp >= 5000 && exp < 7500){
+      level = 5;
+      percentage = ((exp-5000)/2500);
+    }
+      return [level, Math.floor(percentage)]
+      
+  }
+
   completeTaskHandler = (taskName) => {
     let exp = this.state.activeUser.exp;
     let tasksCompleted = [...this.state.activeUser.tasksCompleted];
     const timeStamp = Date.now();
     const experienceGained = this.calculateExpHandler(taskName);
     exp += experienceGained;
+    let levelInfo = this.calculateLevelHandler(exp);
+    
     const task = { name: taskName, timeStamp, experienceGained }
     tasksCompleted.push(task);
     let activeUser = { 
       ...this.state.activeUser,
       tasksCompleted,
       exp,
+      level: levelInfo[0],
+      levelPercentage: levelInfo[1],
     }
 
     let users = [...this.state.users];
@@ -128,8 +150,6 @@ class App extends Component {
         return user
       }
     })
-    
-
     this.setState(() => ({ activeUser, users: updatedUsers }))
     
   }

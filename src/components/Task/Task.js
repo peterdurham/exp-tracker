@@ -18,8 +18,6 @@ import deployproject from '../../assets/images/tasks/deployproject.png';
 import running from '../../assets/images/tasks/running.png';
 
 const Task = ({ taskName, completeTask, optionSelected }) => {
-    const tasks = ['coding', 'read', 'socialize', 'weights', 'meetup', 'journalling', 'meditation', 'pairprogramming', 
-    'completeproject', 'brushteeth', 'paybills', 'plannewproject', 'cookfood', 'cleanroom', 'deployproject', 'running'];
     let image;
     let label;
     if(taskName === 'coding') {
@@ -74,7 +72,10 @@ const Task = ({ taskName, completeTask, optionSelected }) => {
     
     
     return (
-        <div onClick={()=>completeTask(taskName)} className={optionSelected === taskName ? 'Task__selected Task': 'Task'}>
+        <div onClick={()=>completeTask(taskName)} 
+        className={optionSelected === taskName ? 'Task__selected Task': 'Task'}
+        
+        >
             {image}
             {label}
             

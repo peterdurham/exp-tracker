@@ -39,7 +39,7 @@ class CreateProfile extends Component {
     }
 
     keyPress = (key) => {
-        const { favoritesSelected, selectFavorite, nameInput, bindNameInput, createNewProfile } = this.props;
+        const { selectFavorite } = this.props;
         const optionSelected = this.state.optionSelected;
         let newOption;
         if(key==='left' && optionSelected === 'bard') {

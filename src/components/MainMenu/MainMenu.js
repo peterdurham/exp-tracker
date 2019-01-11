@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 
 import './MainMenu.scss';
@@ -46,7 +46,7 @@ class MainMenu extends Component {
 
 
     render() {
-        const { activeUser, switchUser } = this.props;
+        const { activeUser } = this.props;
         
         
         

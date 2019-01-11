@@ -1,11 +1,12 @@
 import React from 'react';
+
 import FavoritesIcon from '../FavoritesIcon/FavoritesIcon';
+import ExpBar from '../Status/ExpBar/ExpBar';
+
 import './Status.scss';
 
 const Status = ({ activeUser, favoriteFood, favoriteActivity, favoriteNature, optionSelected }) => {
-    
-
-    
+    console.log(activeUser.exp);
     return (
         <div className={optionSelected === 'status' ? 'Status__selected status': 'status'}>
             <div className="status__name">{activeUser.name}</div>
@@ -13,7 +14,8 @@ const Status = ({ activeUser, favoriteFood, favoriteActivity, favoriteNature, op
             <FavoritesIcon favorite = {favoriteFood}/>
             <FavoritesIcon favorite = {favoriteActivity}/>
             <FavoritesIcon favorite = {favoriteNature}/>
-            <div className="status__exp">EXP: {activeUser.exp}</div>
+            <ExpBar activeUser = {activeUser}/>
+            
         </div>
     );
 }

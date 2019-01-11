@@ -1,0 +1,20 @@
+.ExpBar {
+
+
+
+    &__container {
+        width: 200px;
+        border: 1px solid yellow;
+        position: relative;
+        height: 4rem;
+    }
+    &__progress {
+
+    }
+    &__level {
+        color: white;
+        position: absolute;
+        top: 1rem;
+        left: 5rem;
+    }
+}

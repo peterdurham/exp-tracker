@@ -124,9 +124,8 @@ class SwitchUser extends Component {
                                /> : <UserProfile name="empty" index="2" selectProfile = {this.selectProfileHandler} optionSelected = {this.state.optionSelected}/>}
                         </div>
                         <Link to="/" 
-                        className="SwitchUser__link" 
                         onMouseOver={() => this.selectProfileHandler('10')}
-                        className={this.state.optionSelected === '10' ? "SwitchUser__button SwitchUser__selected" : "SwitchUser__button"}
+                        className={this.state.optionSelected === '10' ? "SwitchUser__link SwitchUser__selected" : "SwitchUser__link"}
                         >
                         Back to Main Menu
                         </Link>
