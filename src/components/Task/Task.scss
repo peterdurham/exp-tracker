@@ -1,0 +1,15 @@
+.Task {
+    border: 1px solid black;
+    padding: 2rem;
+    flex-basis: 20%;
+    margin: 2rem;
+    display:flex;
+    flex-direction: column;
+    cursor: pointer;
+    
+    &__image {
+        height: 8rem;
+        width: 8rem;
+        margin: 0 auto;
+    }
+}

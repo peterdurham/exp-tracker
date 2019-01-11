@@ -1,5 +1,14 @@
 import React from 'react';
 import './CreateProfile.scss';
+import { Link } from 'react-router-dom';
+
+import bard from '../../assets/images/profile/bard.jpg';
+import sorceress from '../../assets/images/profile/sorceress.jpg';
+import ranger from '../../assets/images/profile/ranger.jpg';
+import monk from '../../assets/images/profile/monk.jpg';
+import wizard from '../../assets/images/profile/wizard.jpg';
+
+
 
 import pizza from '../../assets/images/food/pizza.png';
 import carrots from '../../assets/images/food/carrot.png';
@@ -29,12 +38,26 @@ const CreateProfile = ({ favoritesSelected, selectFavorite, nameInput, bindNameI
     let selectedFood = favoritesSelected.food;
     let selectedActivity = favoritesSelected.activity;
     let selectedNature = favoritesSelected.nature;
+    let profileImage = favoritesSelected.image;
     
     return (
         <div className="create">
             <h1>New Profile</h1>
+            <Link to="/">
+            Back to Main Menu
+            </Link>
             <input onChange={(e)=>bindNameInput(e)} value={nameInput} type="text" className="create__input" />
             
+            <div className="option-label">Choose profile image</div>
+            <div className="profile-images">
+                <img onClick={()=>selectFavorite('image', 'bard')} className={profileImage === 'bard' ? 'option-selected profile-image' : 'profile-image'} src={bard} alt="pizza" />
+                <img onClick={()=>selectFavorite('image', 'sorceress')} className={profileImage === 'sorceress' ? 'option-selected profile-image' : 'profile-image'} src={sorceress} alt="carrots" />
+                <img onClick={()=>selectFavorite('image', 'ranger')} className={profileImage === 'ranger' ? 'option-selected profile-image' : 'profile-image'} src={ranger} alt="egg" />
+                <img onClick={()=>selectFavorite('image', 'monk')} className={profileImage === 'monk' ? 'option-selected profile-image' : 'profile-image'} src={monk} alt="icecream" />
+                <img onClick={()=>selectFavorite('image', 'wizard')} className={profileImage === 'wizard' ? 'option-selected profile-image' : 'profile-image'} src={wizard} alt="mushroom" />
+                
+            </div>
+
             <div className="option-label">Favorite Food</div>
             <div className="foods">
                 <img onClick={()=>selectFavorite('food', 'pizza')} className={selectedFood === 'pizza' ? 'option-selected option' : 'option'} src={pizza} alt="pizza" />
@@ -66,8 +89,13 @@ const CreateProfile = ({ favoritesSelected, selectFavorite, nameInput, bindNameI
                 <img onClick={()=>selectFavorite('nature', 'desert')} className={selectedNature === 'desert' ? 'option-selected option' : 'option'} src={desert} alt="desert" />
             </div>
 
-
-            <button onClick={createNewProfile} className="create__button">Create Profile</button>
+            <Link 
+                to="/exp"
+                className="create__button"
+                onClick={createNewProfile}
+                >Create Profile
+            </Link>
+            
         </div>
     );
 }

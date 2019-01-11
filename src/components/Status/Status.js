@@ -4,11 +4,12 @@ import './Status.scss';
 
 const Status = ({ activeUser, favoriteFood, favoriteActivity, favoriteNature }) => {
     
-    console.log(activeUser.favoriteFood);
+
     
     return (
         <div className="status">
             <div className="status__name">{activeUser.name}</div>
+            
             <FavoritesIcon favorite = {favoriteFood}/>
             <FavoritesIcon favorite = {favoriteActivity}/>
             <FavoritesIcon favorite = {favoriteNature}/>

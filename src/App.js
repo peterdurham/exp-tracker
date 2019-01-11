@@ -5,7 +5,7 @@ import { BrowserRouter as Router,
   Link,
 } from 'react-router-dom';
 
-import './App.scss';
+import './assets/sass/main.scss';
 
 import Header from './components/Header/Header';
 import MainMenu from './components/MainMenu/MainMenu';
@@ -14,6 +14,8 @@ import Navigation from './components/Navigation/Navigation';
 import CreateProfile from './components/CreateProfile/CreateProfile';
 import Task from './components/Task/Task';
 import SwitchUser from './components/SwitchUser/SwitchUser';
+import ExpDashboard from './components/ExpDashboard/ExpDashboard';
+
 
 class App extends Component {
   state = {
@@ -21,27 +23,41 @@ class App extends Component {
     activeUser: {},
 
     profileSelected: false,
-    creatingProfile: false,
-    switchingUser: false,
+    
 
     nameInput: '',
-    favoritesSelected: { food: 'pizza', activity: 'walking', nature: 'trees'}
+    favoritesSelected: { image:'bard', food: 'pizza', activity: 'walking', nature: 'trees'}
   }
+  componentDidMount(){
+    try {
+        const jsonUsers = localStorage.getItem('users');
+        const jsonActive = localStorage.getItem('active')
+        const users = JSON.parse(jsonUsers);
+        const active = JSON.parse(jsonActive)
 
+        if(users){
+            this.setState(()=>({ users, activeUser: active }))
+        }
+    } catch (e){
+        //do nothing
+    }
 
-
-  beginNewProfileHandler = () => {
-    this.setState(() => ({ creatingProfile: true, profileSelected: true }))
   }
-  switchUserHandler = () => {
-    this.setState(() => ({ switchingUser: true, profileSelected: true }))
+  componentDidUpdate(prevProps, prevState){
+    if (prevState.users.length !== this.state.users.length || prevState.activeUser !== this.state.activeUser) {
+        const jsonUsers = JSON.stringify(this.state.users);
+        localStorage.setItem('users', jsonUsers);
+        const jsonActive = JSON.stringify(this.state.activeUser);
+        localStorage.setItem('active', jsonActive);
+      } 
   }
   createNewProfileHandler = () => {
     const user = {
       name: this.state.nameInput,
-      favoritesFood: this.state.favoritesSelected.food,
+      favoriteFood: this.state.favoritesSelected.food,
       favoriteActivity: this.state.favoritesSelected.activity,
       favoriteNature: this.state.favoritesSelected.nature,
+      profileImage: this.state.favoritesSelected.image,
       tasksCompleted: [],
       exp: 0,
     }
@@ -49,9 +65,7 @@ class App extends Component {
     users.push(user);
     this.setState(() => ({ activeUser: user, users, creatingProfile: false }))
   }
-  continueProfileHandler = () => {
-    this.setState(() => ({}))
-  }
+  
   bindNameInputHandler = (event) => {
     let input = event.target.value;
     this.setState(() => ({ nameInput: input }))
@@ -61,43 +75,87 @@ class App extends Component {
     favorites[category] = favorite;
     this.setState(() => ({ favoritesSelected: favorites }))
   }
+  switchActiveUserHandler = (userName) => {
+    let users = [...this.state.users];
+    let activeUser = users.filter((user) => user.name === userName)[0];
+    this.setState(() => ({activeUser}))
+  }
+  calculateExpHandler = (taskName) => {
+    let exp;
+    console.log(taskName);
+    if(taskName === 'journalling' || taskName === 'meditation' || taskName === 'brushteeth' || taskName === 'read' || taskName === 'paybills') {
+      exp = Math.floor(Math.random() * 11 + 20);
+    } else if(taskName === 'coding' || taskName === 'socialize' || taskName === 'paybills' || taskName === 'meetup' || taskName === 'pairprogramming' || taskName === 'plannewproject' || taskName === 'deployproject' || taskName === 'running' || taskName==='cookfood'){
+      exp = Math.floor(Math.random() * 21 + 40);
+    } else if(taskName === 'weights' || taskName === 'cleanroom'){
+      exp = Math.floor(Math.random() * 41 + 80);
+    } else if(taskName === 'completeproject') {
+      exp = Math.floor(Math.random() * 101 + 200);
+    }
+    return exp;
+  }
+  completeTaskHandler = (taskName) => {
+    let exp = this.state.activeUser.exp;
+    let tasksCompleted = [...this.state.activeUser.tasksCompleted];
+    const timeStamp = Date.now();
+    const experienceGained = this.calculateExpHandler(taskName);
+    exp += experienceGained;
+    const task = { name: taskName, timeStamp, experienceGained }
+    tasksCompleted.push(task);
+    let activeUser = { 
+      ...this.state.activeUser,
+      tasksCompleted,
+      exp,
+    }
+    this.setState(() => ({ activeUser }))
+    
+  }
 
   render() {
-    const mainMenu = (this.state.profileSelected) ?
-    null: <MainMenu 
-            activeUser = {this.state.activeUser}
-            beginNew = {this.beginNewProfileHandler}
-            continueProfile = {this.continueProfileHandler}
-            switchUser = {this.switchUserHandler} />
-
-    const creatingProfile = (this.state.creatingProfile) ?
-    <CreateProfile 
-      favoritesSelected = {this.state.favoritesSelected} 
-      selectFavorite = {this.selectFavoriteHandler}
-      bindNameInput = {this.bindNameInputHandler}
-      nameInput = {this.state.nameInput}
-      createNewProfile = {this.createNewProfileHandler}
-      /> : null
-    const switchingUser = (this.state.switchingUser) ?
-    <SwitchUser
-      
-    /> : null
     return (
       <Router>
         <div className="App">
-          {mainMenu}
-          {creatingProfile}
-          {switchingUser}
-          
-          <Header />
-          <Status 
-            activeUser = {this.state.activeUser}
-            favoriteFood = {this.state.favoritesSelected.food}
-            favoriteActivity = {this.state.favoritesSelected.activity}
-            favoriteNature = {this.state.favoritesSelected.nature}
+          <Route 
+            exact path="/" 
+            render={(props) => <MainMenu {...props} 
+                activeUser = {this.state.activeUser}
+                
+                /> 
+              }
           />
-          
-          <Task />
+          <Route 
+            path="/create-profile" 
+            render={(props) => <CreateProfile {...props}
+              favoritesSelected = {this.state.favoritesSelected} 
+              selectFavorite = {this.selectFavoriteHandler}
+              bindNameInput = {this.bindNameInputHandler}
+              nameInput = {this.state.nameInput}
+              createNewProfile = {this.createNewProfileHandler}
+              />
+            
+            }
+           />
+          <Route 
+            path="/switch-user" 
+            render={(props) => <SwitchUser {...props}
+              users = {this.state.users}
+              activeUser = {this.state.activeUser} 
+              switchActiveUser = {this.switchActiveUserHandler}
+            />
+            } 
+          />
+          <Route 
+            path="/exp" 
+            render={(props) => <ExpDashboard {...props}
+              activeUser = {this.state.activeUser}
+              favoriteFood = {this.state.favoritesSelected.food}
+              favoriteActivity = {this.state.favoritesSelected.activity}
+              favoriteNature = {this.state.favoritesSelected.nature}
+              completeTask = {this.completeTaskHandler}
+            />
+          }
+          />
+
         </div>
       </Router>
     );

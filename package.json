@@ -7,7 +7,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-keydown": "^1.9.7",
+    "react-keyboard-event-handler": "^1.4.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.3"
   },
