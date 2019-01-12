@@ -1,8 +1,13 @@
 import React from 'react';
 
-const Achievements = (props) => {
+const Achievements = ({activeUser, optionSelected, highlightOption}) => {
+    
+    
     return(
-        <div>Achievements</div>
+        <div>
+            Achievements
+
+        </div>
     );
 }
 

@@ -22,6 +22,11 @@ class ExpDashboard extends Component {
         let newOption;
         const { completeTask } = this.props;
 
+        if(key==='up' && !optionSelected){
+            newOption='status';
+        }
+
+
         if((key==='up' && (optionSelected === 'status' || optionSelected === 'earn' || optionSelected === 'history' || optionSelected === 'achievements' || optionSelected === 'settings')) || (key==='left' && (optionSelected === 'status' || optionSelected === 'mainmenu')) || (key==='enter' && optionSelected === 'status')) {
             newOption = 'status';
         } else if((key==='right' && optionSelected === 'status') || (key==='up' && optionSelected === 'mainmenu') || (key==='left' && optionSelected === 'switchuser')) {
@@ -74,7 +79,19 @@ class ExpDashboard extends Component {
             this.props.history.push('/');
         } else if(key==='enter' && optionSelected === 'switchuser') {
             this.props.history.push('/switch-user');
-        } else if(key==='enter' && (optionSelected === 'coding'|| optionSelected === 'read' || optionSelected === 'socialize' || optionSelected === 'weights' || optionSelected === 'meetup' || optionSelected === 'journalling' || optionSelected === 'meditation'|| optionSelected === 'pairprogramming' || optionSelected === 'completeproject' || optionSelected === 'brushteeth' || optionSelected === 'paybills' || optionSelected === 'plannewproject' || optionSelected === 'cookfood' ||optionSelected === 'cleanroom' || optionSelected === 'deployproject' || optionSelected === 'running')) {
+        } else if(key==='enter' && optionSelected === 'earn') {
+            newOption = 'earn';
+            this.props.history.push('/exp/earn-exp');
+        } else if(key==='enter' && optionSelected === 'history') {
+            newOption = 'history';
+            this.props.history.push('/exp/task-history');
+        } else if(key==='enter' && optionSelected === 'achievements') {
+            newOption = 'achievements';
+            this.props.history.push('/exp/achievements');
+        } else if(key==='enter' && optionSelected === 'settings') {
+            newOption = 'settings';
+            this.props.history.push('/exp/settings');
+        }else if(key==='enter' && (optionSelected === 'coding'|| optionSelected === 'read' || optionSelected === 'socialize' || optionSelected === 'weights' || optionSelected === 'meetup' || optionSelected === 'journalling' || optionSelected === 'meditation'|| optionSelected === 'pairprogramming' || optionSelected === 'completeproject' || optionSelected === 'brushteeth' || optionSelected === 'paybills' || optionSelected === 'plannewproject' || optionSelected === 'cookfood' ||optionSelected === 'cleanroom' || optionSelected === 'deployproject' || optionSelected === 'running')) {
             completeTask(optionSelected);
             newOption = optionSelected;
         } 
@@ -133,8 +150,16 @@ class ExpDashboard extends Component {
                     }
                     />
                     
-                    <Route exact path="/exp/task-history" component={TaskHistory} />
-                    <Route exact path="/exp/achievements" component={Achievements} />
+                    <Route path="/exp/task-history" render={() => <TaskHistory 
+                        activeUser = {activeUser}
+                        optionSelected = {this.state.optionSelected}
+                        highlightOption = {this.highlightOption}
+                    />} />
+                    <Route exact path="/exp/achievements" render={() => <Achievements 
+                        activeUser = {activeUser}
+                        optionSelected = {this.state.optionSelected}
+                        highlightOption = {this.highlightOption}
+                    />} />
                     <Route exact path="/exp/settings" component={Settings} />
                 </Switch>
             </div>

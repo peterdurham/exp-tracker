@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import './SwitchUser.scss';
 
+
 import UserProfile from './UserProfile/UserProfile';
 
 import logo from '../../assets/images/crystal.jpg';
@@ -12,6 +13,9 @@ class SwitchUser extends Component {
         optionSelected: '0',
         
     }
+
+    
+
     keyPress = (key) => {
         const {users, switchActiveUser} = this.props;
         const optionSelected = this.state.optionSelected;
@@ -129,8 +133,9 @@ class SwitchUser extends Component {
                         >
                         Back to Main Menu
                         </Link>
+                        
                         <p>delete</p>
-                    
+                                
                     </div>
                     
                 </div>

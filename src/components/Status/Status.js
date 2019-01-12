@@ -6,7 +6,7 @@ import ExpBar from '../Status/ExpBar/ExpBar';
 import './Status.scss';
 
 const Status = ({ activeUser, favoriteFood, favoriteActivity, favoriteNature, optionSelected }) => {
-    console.log(activeUser.exp);
+    
     return (
         <div className={optionSelected === 'status' ? 'Status__selected status': 'status'}>
             <div className="status__name">{activeUser.name}</div>
