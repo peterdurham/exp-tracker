@@ -84,7 +84,7 @@ class SwitchUser extends Component {
                     <div className="SwitchUser__main">
                         
                         <div className="SwitchUser__main--text">Choose a profile:</div>
-                        <div className="SwitchUser__main--subtext">logged in as {activeUser.name}</div>
+                        <div className="SwitchUser__main--subtext">logged in as <span className="SwitchUser__main--name">{activeUser.name}</span></div>
                         
                         <div className="SwitchUser__users">
                             {users.length > 0 ? <UserProfile 
@@ -131,10 +131,12 @@ class SwitchUser extends Component {
                         onMouseOver={() => this.selectProfileHandler('10')}
                         className={this.state.optionSelected === '10' ? "SwitchUser__link SwitchUser__selected" : "SwitchUser__link"}
                         >
-                        Back to Main Menu
+                        Main Menu
                         </Link>
-                        
-                        <p>delete</p>
+                        <br/>
+                        <div className={this.state.optionSelected === 'delete' ? "SwitchUser__link SwitchUser__selected" : "SwitchUser__link"}>
+                          Delete User
+                        </div>
                                 
                     </div>
                     

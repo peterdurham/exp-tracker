@@ -46,196 +46,8 @@ class CreateProfile extends Component {
         }
         
     }
-    keyPress = (key) => {
-        const { selectFavorite, favoritesSelected } = this.props;
-        const optionSelected = this.state.optionSelected;
-        let newOption;
-        
-        let selectedFood = favoritesSelected.food;
-        let selectedActivity = favoritesSelected.activity;
-        let selectedNature = favoritesSelected.nature;
-        let profileImage = favoritesSelected.image;
-
-        
-        if(key==='down' && (optionSelected === 'bard' || optionSelected === 'sorceress' || optionSelected === 'ranger'|| optionSelected ==='monk'|| optionSelected==='wizard')) {
-            newOption = selectedFood;
-        } else if(key==='up' && (optionSelected === 'walking' || optionSelected==="swimming" || optionSelected==='weights' || optionSelected==='yoga' || optionSelected ==='running')) {
-            newOption = selectedFood;
-        } else if(key==='down' && optionSelected === 'favoriteActivity') {
-            newOption = selectedActivity;
-        } else if(key==='up' && optionSelected === 'favoriteNature') {
-            newOption = selectedActivity;
-        } else if(key==='down' && optionSelected === 'favoriteNature') {
-            newOption = selectedNature;
-        } else if(key==='up' && optionSelected === 'createprofile') {
-            newOption = selectedNature;
-        } 
-
-
-
-        if(key==='left' && optionSelected === 'bard') {
-            newOption = 'bard'
-        } else if(key==='right' && optionSelected === 'bard') {
-            newOption = 'sorceress';
-            selectFavorite('image', newOption);
-        } else if(key==='left' && optionSelected === 'sorceress') {
-            newOption = 'bard';
-            selectFavorite('image', newOption);
-        } else if(key==='right' && optionSelected === 'sorceress') {
-            newOption = 'ranger';
-            selectFavorite('image', newOption);
-        } else if(key==='left' && optionSelected === 'ranger') {
-            newOption = 'sorceress';
-            selectFavorite('image', newOption);
-        } else if(key==='right' && optionSelected === 'ranger') {
-            newOption = 'monk';
-            selectFavorite('image', newOption);
-        } else if(key==='left' && optionSelected === 'monk') {
-            newOption = 'ranger';
-            selectFavorite('image', newOption);
-        } else if(key==='right' && optionSelected === 'monk') {
-            newOption = 'wizard';
-            selectFavorite('image', newOption);
-        } else if(key==='left' && optionSelected === 'wizard') {
-            newOption = 'monk'; 
-            selectFavorite('image', newOption);
-        } else if(key==='right' && optionSelected === 'wizard') {
-            newOption = 'wizard';
-            selectFavorite('image', newOption);
-        } 
-         
-
-        if(key==='left' && optionSelected === 'pizza') {
-            newOption = 'pizza'
-        } else if(key==='right' && optionSelected === 'pizza') {
-            newOption = 'carrots';
-            selectFavorite('food', newOption);
-        } else if(key==='left' && optionSelected === 'carrots') {
-            newOption = 'pizza';
-            selectFavorite('food', newOption);
-        } else if(key==='right' && optionSelected === 'carrots') {
-            newOption = 'egg';
-            selectFavorite('food', newOption);
-        } else if(key==='left' && optionSelected === 'egg') {
-            newOption = 'carrots';
-            selectFavorite('food', newOption);
-        } else if(key==='right' && optionSelected === 'egg') {
-            newOption = 'icecream';
-            selectFavorite('food', newOption);
-        } else if(key==='left' && optionSelected === 'icecream') {
-            newOption = 'egg';
-            selectFavorite('food', newOption);
-        } else if(key==='right' && optionSelected === 'icecream') {
-            newOption = 'mushroom';
-            selectFavorite('food', newOption);
-        } else if(key==='left' && optionSelected === 'mushroom') {
-            newOption = 'icecream';
-            selectFavorite('food', newOption);
-        } else if(key==='right' && optionSelected === 'mushroom') {
-            newOption = 'broccoli';
-            selectFavorite('food', newOption);
-        } else if(key==='left' && optionSelected === 'broccoli') {
-            newOption = 'mushroom';
-            selectFavorite('food', newOption);
-        } else if(key==='right' && optionSelected === 'broccoli') {
-            newOption = 'fish';
-            selectFavorite('food', newOption);
-        } else if(key==='left' && optionSelected === 'fish') {
-            newOption = 'broccoli';
-            selectFavorite('food', newOption);
-        } else if(key==='right' && optionSelected === 'fish') {
-            newOption = 'fish'
-        }
-
-        if(key==='left' && optionSelected === 'walking') {
-            newOption = 'walking';
-            selectFavorite('activity', newOption);
-        } else if(key==='right' && optionSelected === 'walking') {
-            newOption = 'swimming';
-            selectFavorite('activity', newOption);
-        } else if(key==='left' && optionSelected === 'swimming') {
-            newOption = 'walking';
-            selectFavorite('activity', newOption);
-        } else if(key==='right' && optionSelected === 'swimming') {
-            newOption = 'weights';
-            selectFavorite('activity', newOption);
-        } else if(key==='left' && optionSelected === 'weights') {
-            newOption = 'swimming';
-            selectFavorite('activity', newOption);
-        } else if(key==='right' && optionSelected === 'weights') {
-            newOption = 'yoga';
-            selectFavorite('activity', newOption);
-        } else if(key==='left' && optionSelected === 'yoga') {
-            newOption = 'weights';
-            selectFavorite('activity', newOption);
-        } else if(key==='right' && optionSelected === 'yoga') {
-            newOption = 'running';
-            selectFavorite('activity', newOption);
-        } else if(key==='left' && optionSelected === 'running') {
-            newOption = 'yoga';
-            selectFavorite('activity', newOption);
-        } else if(key==='right' && optionSelected === 'running') {
-            newOption = 'running'
-        } 
-
-        if(key==='left' && optionSelected === 'trees') {
-            newOption = 'trees'
-        } else if(key==='right' && optionSelected === 'trees') {
-            newOption = 'fields';
-            selectFavorite('nature', newOption);
-        } else if(key==='left' && optionSelected === 'fields') {
-            newOption = 'trees';
-            selectFavorite('nature', newOption);
-        } else if(key==='right' && optionSelected === 'fields') {
-            newOption = 'flower';
-            selectFavorite('nature', newOption);
-        } else if(key==='left' && optionSelected === 'flower') {
-            newOption = 'fields';
-            selectFavorite('nature', newOption);
-        } else if(key==='right' && optionSelected === 'flower') {
-            newOption = 'bees';
-            selectFavorite('nature', newOption);
-        } else if(key==='left' && optionSelected === 'bees') {
-            newOption = 'flower';
-            selectFavorite('nature', newOption);
-        } else if(key==='right' && optionSelected === 'bees') {
-            newOption = 'sky' ;
-            selectFavorite('nature', newOption);
-        } else if(key==='left' && optionSelected === 'sky') {
-            newOption = 'bees';
-            selectFavorite('nature', newOption);
-        } else if(key==='right' && optionSelected === 'sky') {
-            newOption = 'volcano';
-            selectFavorite('nature', newOption);
-        } else if(key==='left' && optionSelected === 'volcano') {
-            newOption = 'sky';
-            selectFavorite('nature', newOption);
-        } else if(key==='right' && optionSelected === 'volcano') {
-            newOption = 'desert';
-            selectFavorite('nature', newOption);
-        } else if(key==='left' && optionSelected === 'desert') {
-            newOption = 'volcano';
-            selectFavorite('nature', newOption);
-        } else if(key==='right' && optionSelected === 'desert') {
-            newOption = 'desert'
-        }
-        
-        else if ((key==='down' && (optionSelected === 'trees' || optionSelected === 'fields' || optionSelected === 'flower' || optionSelected === 'bees' || optionSelected === 'sky'|| optionSelected === 'volcano'|| optionSelected === 'desert')) || (key==='up' && optionSelected === 'mainmenu') || ((key==='left'|| key==='right') && optionSelected === 'createprofile')) {
-            newOption = 'createprofile';
-        } else if((key==='down' && (optionSelected === 'createprofile' || optionSelected === 'mainmenu')) || ((key==='left' || key==='right' || key==='up') && optionSelected === 'mainmenu')) {
-            newOption = 'mainmenu';
-        }
-        
-        
-         else if(key==='enter' && optionSelected === 'createprofile') {
-            this.props.history.push('/exp');
-        } else if(key==='enter' && optionSelected === 'mainmenu') {
-            this.props.history.push('/');
-        } 
-
-        
-        this.setState(() => ({ optionSelected: newOption }))
-    }
+    
+    
 
     // selectIconHandler = (option) => {
     //     this.setState(() => ({optionSelected: option}));
@@ -250,22 +62,14 @@ class CreateProfile extends Component {
 
         return (
             <div className="CreateProfile">
-                <KeyboardEventHandler 
-                    handleKeys={['up', 'down', 'left', 'right', 'enter']}
-                    onKeyEvent={(key, e) => this.keyPress(key)}
-                />
+                
                 <div className="CreateProfile__container">
                     <h1>EXP -- New Profile</h1>
                     <div className="CreateProfile__main">
                         
                         
-                    <KeyboardEventHandler
-                        handleKeys={['down', 'enter']}
-                        onKeyEvent={(key, e) => this.keyPress(key)} >
+                    
                         <input onChange={(e)=>bindNameInput(e)} value={nameInput} type="text" className={this.state.optionSelected==='input' ? "CreateProfile__input CreateProfile__selected" : "CreateProfile__input"} />
-                        
-                    </KeyboardEventHandler>
-                        
                         
                         
                         

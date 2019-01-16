@@ -48,21 +48,21 @@ class MainMenu extends Component {
         
         
         return (
-            <div className="Menu">
+            <div className="MainMenu">
                 <KeyboardEventHandler 
                     handleKeys={['up', 'down', 'enter']}
                     onKeyEvent={(key, e) => this.keyPress(key)}
                 />
                 
                 
-                <h1>EXP</h1>
+                <h1 className="MainMenu__header">EXP</h1>
                 
                 <ul>
                     <li>
                         <Link 
                             to="/create-profile"
                             onMouseOver={()=>this.highlightOption('newProfile')}
-                            className={this.state.optionSelected==='newProfile' ? 'selected' : 'unselected'}
+                            className={this.state.optionSelected==='newProfile' ? 'MainMenu__option MainMenu__selected' : 'MainMenu__option'}
                             >New Profile
                         </Link>
                     </li>
@@ -70,7 +70,7 @@ class MainMenu extends Component {
                         <Link
                             to="/exp"
                             onMouseOver={()=>this.highlightOption('continue')}
-                            className={this.state.optionSelected==='continue' ? 'selected' : 'unselected'}
+                            className={this.state.optionSelected==='continue' ? 'MainMenu__option MainMenu__selected' : 'MainMenu__option'}
                             >Continue as {activeUser.name}
                         </Link>
                     </li>
@@ -78,7 +78,7 @@ class MainMenu extends Component {
                         <Link 
                             to="/switch-user"
                             onMouseOver={()=>this.highlightOption('switchUser')}
-                            className={this.state.optionSelected==='switchUser' ? 'selected' : 'unselected'}
+                            className={this.state.optionSelected==='switchUser' ? 'MainMenu__option MainMenu__selected' : 'MainMenu__option'}
                             >Switch User
                         </Link>
                     </li>
