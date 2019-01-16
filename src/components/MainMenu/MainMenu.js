@@ -10,12 +10,9 @@ class MainMenu extends Component {
         
     }
 
-
     highlightOption = (option) => {
         this.setState(() => ({ optionSelected: option }))
     }
-    
-    
 
     keyPress = (key) => {
         const optionSelected = this.state.optionSelected;
@@ -59,6 +56,7 @@ class MainMenu extends Component {
                 
                 
                 <h1>EXP</h1>
+                
                 <ul>
                     <li>
                         <Link 
@@ -85,6 +83,7 @@ class MainMenu extends Component {
                         </Link>
                     </li>
                 </ul>
+                
                 
                 
             </div>

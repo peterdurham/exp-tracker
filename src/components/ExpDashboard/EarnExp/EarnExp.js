@@ -2,7 +2,7 @@ import React from 'react';
 
 import Task from '../../Task/Task';
 
-const EarnExp = ({ completeTask, optionSelected, highlightOption }) => {
+const EarnExp = ({ completeTask, optionSelected, highlightOption, triggerAnimation }) => {
     const tasks = ['coding', 'read', 'socialize', 'weights', 'meetup', 'journalling', 'meditation', 'pairprogramming', 'completeproject', 'brushteeth', 'paybills', 'plannewproject', 'cookfood', 'cleanroom', 'deployproject', 'running'];
       
     return(
@@ -15,6 +15,7 @@ const EarnExp = ({ completeTask, optionSelected, highlightOption }) => {
                 completeTask={completeTask}
                 optionSelected={optionSelected}
                 highlightOption={highlightOption}
+                triggerAnimation={triggerAnimation}
             />)}
             </div>
             

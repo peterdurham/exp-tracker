@@ -35,9 +35,17 @@ import desert from '../../assets/images/nature/desert.png';
 
 class CreateProfile extends Component {
     state = {
-        optionSelected: 'monk',
+        optionSelected: 'bard',
     }
-
+    selectOption = (option) => {
+        this.setState(() => ({optionSelected: option}))
+    }
+    unselectOption = (option) => {
+        if(this.state.optionSelected === option) {
+            this.setState(() => ({optionSelected: ''}))
+        }
+        
+    }
     keyPress = (key) => {
         const { selectFavorite, favoritesSelected } = this.props;
         const optionSelected = this.state.optionSelected;
@@ -48,18 +56,10 @@ class CreateProfile extends Component {
         let selectedNature = favoritesSelected.nature;
         let profileImage = favoritesSelected.image;
 
-        if(((key==='up' || key==='left' || key==='right') && optionSelected === 'input') || (key==='up' && optionSelected === 'chooseProfile')) {
-            newOption = 'input';
-        } 
-         else if((key==='down' && optionSelected === 'input' ) || ((key==='right' || key==='left') && optionSelected === 'chooseProfile') || (key==='up' && (optionSelected === 'bard' || optionSelected === 'sorceress' || optionSelected === 'ranger' || optionSelected === 'monk' || optionSelected === 'wizard' ))) {
-            newOption = 'chooseProfile';
-        } else if(key==='down' && optionSelected === 'chooseProfile') {
-            newOption = profileImage;
-        } else if(key==='up' && optionSelected === 'favoriteFood') {
-            newOption = profileImage;
-        } else if(key==='down' && optionSelected === 'favoriteFood') {
+        
+        if(key==='down' && (optionSelected === 'bard' || optionSelected === 'sorceress' || optionSelected === 'ranger'|| optionSelected ==='monk'|| optionSelected==='wizard')) {
             newOption = selectedFood;
-        } else if(key==='up' && optionSelected === 'favoriteActivity') {
+        } else if(key==='up' && (optionSelected === 'walking' || optionSelected==="swimming" || optionSelected==='weights' || optionSelected==='yoga' || optionSelected ==='running')) {
             newOption = selectedFood;
         } else if(key==='down' && optionSelected === 'favoriteActivity') {
             newOption = selectedActivity;
@@ -72,13 +72,6 @@ class CreateProfile extends Component {
         } 
 
 
-        else if ((key === 'down' && (optionSelected === 'bard' || optionSelected === 'sorceress' || optionSelected === 'ranger' || optionSelected === 'monk' || optionSelected === 'wizard')) || ((key === 'left' || key === 'right') && optionSelected === 'favoriteFood') || (key==='up' && (optionSelected === 'pizza' || optionSelected === 'carrots' || optionSelected === 'egg' || optionSelected === 'icecream' || optionSelected === 'mushroom' || optionSelected === 'broccoli' || optionSelected === 'fish' ))) {
-            newOption = 'favoriteFood';
-        } else if ((key==='down' && (optionSelected === 'pizza' || optionSelected === 'carrots' || optionSelected === 'egg' || optionSelected === 'icecream' || optionSelected === 'mushroom' || optionSelected === 'broccoli' || optionSelected === 'fish' )) || ((key === 'left' || key === 'right') && optionSelected === 'favoriteActivity') || (key==='up' && (optionSelected === 'walking' || optionSelected === 'swimming' || optionSelected === 'weights' || optionSelected==='yoga' || optionSelected === 'running'))) {
-            newOption = 'favoriteActivity';
-        } else if((key==='down' && (optionSelected === 'walking' || optionSelected === 'swimming' || optionSelected === 'weights' || optionSelected === 'yoga' || optionSelected === 'running')) || (key==='up' && (optionSelected === 'trees' || optionSelected === 'fields' || optionSelected === 'flower' || optionSelected === 'bees' || optionSelected === 'sky'|| optionSelected === 'volcano'|| optionSelected === 'desert')) || ((key==="left" || key==="right") && optionSelected === 'favoriteNature')) {
-            newOption = 'favoriteNature';
-        }
 
         if(key==='left' && optionSelected === 'bard') {
             newOption = 'bard'
@@ -264,58 +257,70 @@ class CreateProfile extends Component {
                 <div className="CreateProfile__container">
                     <h1>EXP -- New Profile</h1>
                     <div className="CreateProfile__main">
-                        <input autofocus onChange={(e)=>bindNameInput(e)} value={nameInput} type="text" className={this.state.optionSelected==='input' ? "CreateProfile__input CreateProfile__selected" : "CreateProfile__input"} />
-                
-                        <div className={this.state.optionSelected==='chooseProfile' ? "CreateProfile__label CreateProfile__selected" : "CreateProfile__label"}>Choose profile image</div>
+                        
+                        
+                    <KeyboardEventHandler
+                        handleKeys={['down', 'enter']}
+                        onKeyEvent={(key, e) => this.keyPress(key)} >
+                        <input onChange={(e)=>bindNameInput(e)} value={nameInput} type="text" className={this.state.optionSelected==='input' ? "CreateProfile__input CreateProfile__selected" : "CreateProfile__input"} />
+                        
+                    </KeyboardEventHandler>
+                        
+                        
+                        
+                        
+                        <div className="CreateProfile__label">Choose profile image</div>
                         <div className="CreateProfile__images">
-                            <img onClick={()=>selectFavorite('image', 'bard')} className={(profileImage === 'bard' ? 'CreateProfile__favorite profile-image' : 'profile-image') +' '+ (this.state.optionSelected === 'bard' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={bard} alt="pizza" />
-                            <img onClick={()=>selectFavorite('image', 'sorceress')} className={(profileImage === 'sorceress' ? 'CreateProfile__favorite profile-image' : 'profile-image')+' '+ (this.state.optionSelected === 'sorceress' ? 'CreateProfile__selected profile-image' : 'profile-image')}  src={sorceress} alt="carrots" />
-                            <img onClick={()=>selectFavorite('image', 'ranger')} className={(profileImage === 'ranger' ? 'CreateProfile__favorite profile-image' : 'profile-image') +' '+ (this.state.optionSelected === 'ranger' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={ranger} alt="egg" />
-                            <img onClick={()=>selectFavorite('image', 'monk')} className={(profileImage === 'monk' ? 'CreateProfile__favorite profile-image' : 'profile-image')+' '+ (this.state.optionSelected === 'monk' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={monk} alt="icecream" />
-                            <img onClick={()=>selectFavorite('image', 'wizard')} className={(profileImage === 'wizard' ? 'CreateProfile__favorite profile-image' : 'profile-image')+' '+ (this.state.optionSelected === 'wizard' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={wizard} alt="mushroom" />
+                            <img onClick={()=>selectFavorite('image', 'bard')} onMouseOver={()=>this.selectOption('bard')} onMouseOut={()=>this.unselectOption('bard')} className={(profileImage === 'bard' ? 'CreateProfile__favorite profile-image' : 'profile-image') +' '+ (this.state.optionSelected === 'bard' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={bard} alt="pizza" />
+                            <img onClick={()=>selectFavorite('image', 'sorceress')} onMouseOver={()=>this.selectOption('sorceress')} onMouseOut={()=>this.unselectOption('sorceress')} className={(profileImage === 'sorceress' ? 'CreateProfile__favorite profile-image' : 'profile-image')+' '+ (this.state.optionSelected === 'sorceress' ? 'CreateProfile__selected profile-image' : 'profile-image')}  src={sorceress} alt="carrots" />
+                            <img onClick={()=>selectFavorite('image', 'ranger')} onMouseOver={()=>this.selectOption('ranger')} onMouseOut={()=>this.unselectOption('ranger')} className={(profileImage === 'ranger' ? 'CreateProfile__favorite profile-image' : 'profile-image') +' '+ (this.state.optionSelected === 'ranger' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={ranger} alt="egg" />
+                            <img onClick={()=>selectFavorite('image', 'monk')} onMouseOver={()=>this.selectOption('monk')} onMouseOut={()=>this.unselectOption('monk')} className={(profileImage === 'monk' ? 'CreateProfile__favorite profile-image' : 'profile-image')+' '+ (this.state.optionSelected === 'monk' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={monk} alt="icecream" />
+                            <img onClick={()=>selectFavorite('image', 'wizard')} onMouseOver={()=>this.selectOption('wizard')} onMouseOut={()=>this.unselectOption('wizard')} className={(profileImage === 'wizard' ? 'CreateProfile__favorite profile-image' : 'profile-image')+' '+ (this.state.optionSelected === 'wizard' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={wizard} alt="mushroom" />
                         </div>
     
-                        <div className={this.state.optionSelected==='favoriteFood' ? "CreateProfile__label CreateProfile__selected" : "CreateProfile__label"}>Favorite Food</div>
+                        <div className="CreateProfile__label">Favorite Food</div>
                         <div className="CreateProfile__foods">
-                            <img onClick={()=>selectFavorite('food', 'pizza')} className={(selectedFood === 'pizza' ? 'CreateProfile__favorite option' : 'option') +' '+ (this.state.optionSelected === 'pizza' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={pizza} alt="pizza" />
-                            <img onClick={()=>selectFavorite('food', 'carrots')} className={(selectedFood === 'carrots' ? 'CreateProfile__favorite option' : 'option') +' '+ (this.state.optionSelected === 'carrots' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={carrots} alt="carrots" />
-                            <img onClick={()=>selectFavorite('food', 'egg')} className={(selectedFood === 'egg' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'egg' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={egg} alt="egg" />
-                            <img onClick={()=>selectFavorite('food', 'icecream')} className={(selectedFood === 'icecream' ? 'CreateProfile__favorite option' : 'option') +' '+ (this.state.optionSelected === 'icecream' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={icecream} alt="icecream" />
-                            <img onClick={()=>selectFavorite('food', 'mushroom')} className={(selectedFood === 'mushroom' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'mushroom' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={mushroom} alt="mushroom" />
-                            <img onClick={()=>selectFavorite('food', 'broccoli')} className={(selectedFood === 'broccoli' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'broccoli' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={broccoli} alt="broccoli" />
-                            <img onClick={()=>selectFavorite('food', 'fish')} className={(selectedFood === 'fish' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'fish' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={fish} alt="fish" />
+                            <img onClick={()=>selectFavorite('food', 'pizza')} onMouseOver={()=>this.selectOption('pizza')} onMouseOut={()=>this.unselectOption('pizza')} className={(selectedFood === 'pizza' ? 'CreateProfile__favorite option' : 'option') +' '+ (this.state.optionSelected === 'pizza' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={pizza} alt="pizza" />
+                            <img onClick={()=>selectFavorite('food', 'carrots')} onMouseOver={()=>this.selectOption('carrots')} onMouseOut={()=>this.unselectOption('carrots')} className={(selectedFood === 'carrots' ? 'CreateProfile__favorite option' : 'option') +' '+ (this.state.optionSelected === 'carrots' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={carrots} alt="carrots" />
+                            <img onClick={()=>selectFavorite('food', 'egg')} onMouseOver={()=>this.selectOption('egg')} onMouseOut={()=>this.unselectOption('egg')} className={(selectedFood === 'egg' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'egg' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={egg} alt="egg" />
+                            <img onClick={()=>selectFavorite('food', 'icecream')} onMouseOver={()=>this.selectOption('icecream')} onMouseOut={()=>this.unselectOption('icecream')} className={(selectedFood === 'icecream' ? 'CreateProfile__favorite option' : 'option') +' '+ (this.state.optionSelected === 'icecream' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={icecream} alt="icecream" />
+                            <img onClick={()=>selectFavorite('food', 'mushroom')} onMouseOver={()=>this.selectOption('mushroom')} onMouseOut={()=>this.unselectOption('mushroom')} className={(selectedFood === 'mushroom' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'mushroom' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={mushroom} alt="mushroom" />
+                            <img onClick={()=>selectFavorite('food', 'broccoli')} onMouseOver={()=>this.selectOption('broccoli')} onMouseOut={()=>this.unselectOption('broccoli')} className={(selectedFood === 'broccoli' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'broccoli' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={broccoli} alt="broccoli" />
+                            <img onClick={()=>selectFavorite('food', 'fish')} onMouseOver={()=>this.selectOption('fish')} onMouseOut={()=>this.unselectOption('fish')} className={(selectedFood === 'fish' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'fish' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={fish} alt="fish" />
                         </div>
     
-                        <div className={this.state.optionSelected==='favoriteActivity' ? "CreateProfile__label CreateProfile__selected" : "CreateProfile__label"}>Favorite Activity</div>
+                        <div className="CreateProfile__label">Favorite Activity</div>
                         <div className="CreateProfile__activities">
-                            <img onClick={()=>selectFavorite('activity', 'walking')} className={(selectedActivity === 'walking' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'walking' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={walking} alt="walking" />
-                            <img onClick={()=>selectFavorite('activity', 'swimming')} className={(selectedActivity === 'swimming' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'swimming' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={swimming} alt="swimming" />
-                            <img onClick={()=>selectFavorite('activity', 'weights')} className={(selectedActivity === 'weights' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'weights' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={weights} alt="weights" />
-                            <img onClick={()=>selectFavorite('activity', 'yoga')} className={(selectedActivity === 'yoga' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'yoga' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={yoga} alt="yoga" />
-                            <img onClick={()=>selectFavorite('activity', 'running')} className={(selectedActivity === 'running' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'running' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={running} alt="running" />
+                            <img onClick={()=>selectFavorite('activity', 'walking')} onMouseOver={()=>this.selectOption('walking')} onMouseOut={()=>this.unselectOption('walking')} className={(selectedActivity === 'walking' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'walking' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={walking} alt="walking" />
+                            <img onClick={()=>selectFavorite('activity', 'swimming')} onMouseOver={()=>this.selectOption('swimming')} onMouseOut={()=>this.unselectOption('swimming')} className={(selectedActivity === 'swimming' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'swimming' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={swimming} alt="swimming" />
+                            <img onClick={()=>selectFavorite('activity', 'weights')} onMouseOver={()=>this.selectOption('weights')} onMouseOut={()=>this.unselectOption('weights')} className={(selectedActivity === 'weights' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'weights' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={weights} alt="weights" />
+                            <img onClick={()=>selectFavorite('activity', 'yoga')} onMouseOver={()=>this.selectOption('yoga')} onMouseOut={()=>this.unselectOption('yoga')} className={(selectedActivity === 'yoga' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'yoga' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={yoga} alt="yoga" />
+                            <img onClick={()=>selectFavorite('activity', 'running')} onMouseOver={()=>this.selectOption('running')} onMouseOut={()=>this.unselectOption('running')} className={(selectedActivity === 'running' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'running' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={running} alt="running" />
                         </div>
     
-                        <div className={this.state.optionSelected==='favoriteNature' ? "CreateProfile__label CreateProfile__selected" : "CreateProfile__label"}>Favorite Nature</div>
+                        <div className="CreateProfile__label">Favorite Nature</div>
                         <div className="CreateProfile__natures">
-                            <img onClick={()=>selectFavorite('nature', 'trees')} className={(selectedNature === 'trees' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'trees' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={trees} alt="trees" />
-                            <img onClick={()=>selectFavorite('nature', 'fields')} className={(selectedNature === 'fields' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'fields' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={fields} alt="fields" />
-                            <img onClick={()=>selectFavorite('nature', 'flower')} className={(selectedNature === 'flower' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'flower' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={flower} alt="flower" />
-                            <img onClick={()=>selectFavorite('nature', 'bees')} className={(selectedNature === 'bees' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'bees' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={bees} alt="bees" />
-                            <img onClick={()=>selectFavorite('nature', 'sky')} className={(selectedNature === 'sky' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'sky' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={sky} alt="sky" />
-                            <img onClick={()=>selectFavorite('nature', 'volcano')} className={(selectedNature === 'volcano' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'volcano' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={volcano} alt="volcano" />
-                            <img onClick={()=>selectFavorite('nature', 'desert')} className={(selectedNature === 'desert' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'desert' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={desert} alt="desert" />
+                            <img onClick={()=>selectFavorite('nature', 'trees')} onMouseOver={()=>this.selectOption('trees')} onMouseOut={()=>this.unselectOption('trees')} className={(selectedNature === 'trees' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'trees' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={trees} alt="trees" />
+                            <img onClick={()=>selectFavorite('nature', 'fields')} onMouseOver={()=>this.selectOption('fields')} onMouseOut={()=>this.unselectOption('fields')} className={(selectedNature === 'fields' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'fields' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={fields} alt="fields" />
+                            <img onClick={()=>selectFavorite('nature', 'flower')} onMouseOver={()=>this.selectOption('flower')} onMouseOut={()=>this.unselectOption('flower')} className={(selectedNature === 'flower' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'flower' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={flower} alt="flower" />
+                            <img onClick={()=>selectFavorite('nature', 'bees')} onMouseOver={()=>this.selectOption('bees')} onMouseOut={()=>this.unselectOption('bees')} className={(selectedNature === 'bees' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'bees' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={bees} alt="bees" />
+                            <img onClick={()=>selectFavorite('nature', 'sky')} onMouseOver={()=>this.selectOption('sky')} onMouseOut={()=>this.unselectOption('sky')} className={(selectedNature === 'sky' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'sky' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={sky} alt="sky" />
+                            <img onClick={()=>selectFavorite('nature', 'volcano')} onMouseOver={()=>this.selectOption('volcano')} onMouseOut={()=>this.unselectOption('volcano')} className={(selectedNature === 'volcano' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'volcano' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={volcano} alt="volcano" />
+                            <img onClick={()=>selectFavorite('nature', 'desert')} onMouseOver={()=>this.selectOption('desert')} onMouseOut={()=>this.unselectOption('desert')} className={(selectedNature === 'desert' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'desert' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={desert} alt="desert" />
                         </div>
     
                         <Link 
                             to="/exp"
                             className={this.state.optionSelected === 'createprofile' ? "create__button CreateProfile__selected" : "create__button"}
                             onClick={createNewProfile}
+                            onMouseOver={()=>this.selectOption('createprofile')}
                             >Create Profile
                         </Link>
                         <br/>
                         <Link 
                             to="/"
                             className={this.state.optionSelected === 'mainmenu' ? "create__button CreateProfile__selected" : "create__button"}
+                            onMouseOver={()=>this.selectOption('mainmenu')}
                             >
                         Back to Main Menu
                         </Link>

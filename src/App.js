@@ -18,7 +18,8 @@ class App extends Component {
     activeUser: {},
 
     profileSelected: false,
-    
+    activeAnimation: false,
+    animationExp: 0,
 
     nameInput: '',
     favoritesSelected: { image:'bard', food: 'pizza', activity: 'walking', nature: 'trees'}
@@ -151,8 +152,21 @@ class App extends Component {
       }
     })
     this.setState(() => ({ activeUser, users: updatedUsers }))
+    this.triggerAnimationHandler(experienceGained)
+  }
+
+  triggerAnimationHandler = (exp) => {
+    this.setState(() => ({activeAnimation: true, animationExp: exp}))  
+    setTimeout(this.endAnimationHandler, 1000)
     
   }
+  endAnimationHandler = () => {
+    this.setState(() => ({activeAnimation: false}))
+  }
+  
+
+
+
 
   render() {
     return (
@@ -195,6 +209,9 @@ class App extends Component {
               favoriteActivity = {this.state.favoritesSelected.activity}
               favoriteNature = {this.state.favoritesSelected.nature}
               completeTask = {this.completeTaskHandler}
+              activeAnimation = {this.state.activeAnimation}
+              triggerAnimation = {this.triggerAnimationHandler}
+              animationExp = {this.state.animationExp}
             />
           }
           />

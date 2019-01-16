@@ -100,7 +100,7 @@ class ExpDashboard extends Component {
         
     }
     render() {
-        const { activeUser, favoriteActivity, favoriteFood, favoriteNature, completeTask } = this.props;
+        const { activeUser, favoriteActivity, favoriteFood, favoriteNature, completeTask, activeAnimation, triggerAnimation, animationExp } = this.props;
         return(
             <div>Exp dashboard
                 <KeyboardEventHandler 
@@ -116,6 +116,8 @@ class ExpDashboard extends Component {
                         favoriteActivity = {favoriteActivity}
                         favoriteNature = {favoriteNature}
                         optionSelected = {this.state.optionSelected}
+                        activeAnimation = {activeAnimation}
+                        animationExp = {animationExp}
                     />
                     <Link to="/" className={this.state.optionSelected === 'mainmenu' ? 'ExpDashboard__selected ExpDashboard__menulink': 'ExpDashboard__menulink'}>
                     Main Menu
@@ -146,6 +148,8 @@ class ExpDashboard extends Component {
                         completeTask = {completeTask} 
                         optionSelected = {this.state.optionSelected}
                         highlightOption = {this.highlightOption}
+                        triggerAnimation = {triggerAnimation}
+                        
                         />
                     }
                     />

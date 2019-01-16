@@ -5,7 +5,7 @@ import ExpBar from '../Status/ExpBar/ExpBar';
 
 import './Status.scss';
 
-const Status = ({ activeUser, favoriteFood, favoriteActivity, favoriteNature, optionSelected }) => {
+const Status = ({ activeUser, favoriteFood, favoriteActivity, favoriteNature, optionSelected, activeAnimation, animationExp }) => {
     
     return (
         <div className={optionSelected === 'status' ? 'Status__selected status': 'status'}>
@@ -14,7 +14,10 @@ const Status = ({ activeUser, favoriteFood, favoriteActivity, favoriteNature, op
             <FavoritesIcon favorite = {favoriteFood}/>
             <FavoritesIcon favorite = {favoriteActivity}/>
             <FavoritesIcon favorite = {favoriteNature}/>
-            <ExpBar activeUser = {activeUser}/>
+            <ExpBar activeUser = {activeUser} 
+              activeAnimation = {activeAnimation}
+              animationExp = {animationExp}
+              />
             
         </div>
     );

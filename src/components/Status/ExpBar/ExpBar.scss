@@ -1,5 +1,5 @@
 .ExpBar {
-
+    
 
 
     &__container {
@@ -12,9 +12,32 @@
 
     }
     &__level {
-        color: white;
+        color: rgb(107, 43, 43);
         position: absolute;
         top: 1rem;
         left: 5rem;
     }
+}
+
+.animation {
+    transform: translateY(-100px);
+}
+
+.exp-gain {
+    opacity: 0;
+    color: black;
+    
+}
+@keyframes anim {
+    0%   {top: 0px;}
+    100% {top: -50px;}
+  }
+
+.exp-gain-animated {
+    opacity: 1;
+    position: relative;
+    animation-name: anim;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
 }
