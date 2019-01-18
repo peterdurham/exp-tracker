@@ -20,34 +20,16 @@ class SwitchUser extends Component {
         const {users, switchActiveUser} = this.props;
         const optionSelected = this.state.optionSelected;
         let newOption;
-        if(key==='right' && optionSelected === '0') {
+        if((key==='right' && optionSelected === '0')||(key==='up' && (optionSelected === '1' || optionSelected==='mainmenu'))||(key==='left' && optionSelected === '2')) {
             newOption = '1'
-        } else if(key==='left' && optionSelected === '0') {
+        } else if((key==='left' && (optionSelected === '0'||optionSelected === '1'))||(key==='up' && optionSelected === '0')) {
             newOption = '0'
-        } else if(key==='up' && optionSelected === '0') {
-            newOption = '0'
-        } else if(key==='right' && optionSelected === '1') {
+        } else if((key==='right' && (optionSelected === '1' || optionSelected === '2')) || (key==='up' && optionSelected === '2')) {
             newOption = '2'
-        } else if(key==='left' && optionSelected === '1') {
-            newOption = '0'
-        } else if(key==='up' && optionSelected === '1') {
-            newOption = '1'
-        } else if(key==='right' && optionSelected === '2') {
-            newOption = '2'
-        } else if(key==='left' && optionSelected === '2') {
-            newOption = '1' 
-        } else if(key==='up' && optionSelected === '2') {
-            newOption = '2' 
-        } else if(key==='up' && optionSelected === '10') {
-            newOption = '1'
-        } else if(key==='down' && optionSelected === '10') {
-            newOption = '10'
-        }else if(key==='left' && optionSelected === '10') {
-            newOption = '10'
-        }else if(key==='right' && optionSelected === '10') {
-            newOption = '10'
-        }else if(key==='down' && (optionSelected === '0' || optionSelected === '1' || optionSelected === '2')) {
-            newOption = '10'
+        } else if((key==='down' && (optionSelected === '0' || optionSelected === '1' || optionSelected === '2'))||((key==='left' || key==='right') && optionSelected === 'mainmenu') || (key==='up' && optionSelected==='deleteuser')) {
+            newOption = 'mainmenu'
+        } else if(((key==='down' || key==='left' || key==='right') && optionSelected === 'deleteuser')||(key==='down' && optionSelected==='mainmenu')) {
+            newOption = 'deleteuser'
         } else if(key==='enter' && optionSelected === '0' && users.length > 0) {
             switchActiveUser(users[0].name);
             this.props.history.push('/exp');
@@ -129,12 +111,12 @@ class SwitchUser extends Component {
                         </div>
                         <Link to="/" 
                         onMouseOver={() => this.selectProfileHandler('10')}
-                        className={this.state.optionSelected === '10' ? "SwitchUser__link SwitchUser__selected" : "SwitchUser__link"}
+                        className={this.state.optionSelected === 'mainmenu' ? "SwitchUser__link SwitchUser__selected" : "SwitchUser__link"}
                         >
                         Main Menu
                         </Link>
                         <br/>
-                        <div className={this.state.optionSelected === 'delete' ? "SwitchUser__link SwitchUser__selected" : "SwitchUser__link"}>
+                        <div className={this.state.optionSelected === 'deleteuser' ? "SwitchUser__link SwitchUser__selected" : "SwitchUser__link"}>
                           Delete User
                         </div>
                                 

@@ -22,10 +22,10 @@ const Task = ({ taskName, completeTask, optionSelected }) => {
     let label;
     if(taskName === 'coding') {
         image = <img src={coding} alt='coding' className="Task__image"/>;
-        label = "Coding Session (1hr)"
+        label = "Coding Session"
     } else if(taskName === 'read') {
         image = <img src={read} alt='read' className="Task__image" />;
-        label = "Read (30min)";
+        label = "Read";
     } else if (taskName === 'socialize') {
         image = <img src={socialize} alt='socialize' className="Task__image" />;
         label = "Socialize";
@@ -37,13 +37,13 @@ const Task = ({ taskName, completeTask, optionSelected }) => {
         label = "Goto a Meetup";
     } else if (taskName === 'journalling') {
         image = <img src={journalling} alt='journalling' className="Task__image" />;
-        label = "Journalling (30min)";
+        label = "Journalling";
     } else if (taskName === 'meditation') {
         image = <img src={meditation} alt='meditation' className="Task__image" />;
-        label = "Meditation (15min)";
+        label = "Meditation";
     } else if (taskName === 'pairprogramming') {
         image = <img src={pairprogramming} alt='pairprogramming' className="Task__image" />;
-        label = "Pair Programming (1hr)";
+        label = "Pair Programming";
     } else if (taskName === 'completeproject') {
         image = <img src={completeproject} alt='completeproject' className="Task__image" />;
         label = "Complete a Project";
@@ -67,7 +67,7 @@ const Task = ({ taskName, completeTask, optionSelected }) => {
         label = "Deploy a Project";
     } else if (taskName === 'running') {
         image = <img src={running} alt='running' className="Task__image" />;
-        label = "Running or Walking (30min)";
+        label = "Running or Walking";
     }
     
     
@@ -78,7 +78,6 @@ const Task = ({ taskName, completeTask, optionSelected }) => {
         >
             {image}
             {label}
-            
         </div>
     );
 }

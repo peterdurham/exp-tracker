@@ -1,0 +1,14 @@
+.Header {
+    color: white;
+    background-color: rgb(240,240,240);
+    text-align: left;
+    font-size: 1.4rem;
+    width: 40rem;
+    background-color: rgba(22,22,22,.9);
+    border-top: 1px solid gold;
+    border-bottom: 1px solid gold;
+    &__container {
+        width: 100rem;
+        margin: 0 auto;
+    }
+}

@@ -102,7 +102,7 @@ class ExpDashboard extends Component {
     render() {
         const { activeUser, favoriteActivity, favoriteFood, favoriteNature, completeTask, activeAnimation, triggerAnimation, animationExp } = this.props;
         return(
-            <div>Exp dashboard
+            <div className="ExpDashboard">
                 <KeyboardEventHandler 
                     handleKeys={['up', 'down', 'left', 'right', 'enter']}
                     onKeyEvent={(key, e) => this.keyPress(key)}
@@ -129,14 +129,14 @@ class ExpDashboard extends Component {
                     </Link>
                 </div>
                 
-                
-                
                 <br/>
-    
-                <Link to="/exp/earn-exp" className={this.state.optionSelected === 'earn' ? 'ExpDashboard__selected ExpDashboard__link': 'ExpDashboard__link'}>Earn</Link>
-                <Link to="/exp/task-history" className={this.state.optionSelected === 'history' ? 'ExpDashboard__selected ExpDashboard__link': 'ExpDashboard__link'}>History</Link>
-                <Link to="/exp/achievements" className={this.state.optionSelected === 'achievements' ? 'ExpDashboard__selected ExpDashboard__link': 'ExpDashboard__link'}>Achievements</Link>
-                <Link to="/exp/settings" className={this.state.optionSelected === 'settings' ? 'ExpDashboard__selected ExpDashboard__link': 'ExpDashboard__link'}>Settings</Link>
+                <div className="ExpDashboard__nav">
+                    <Link to="/exp/earn-exp" className={this.state.optionSelected === 'earn' ? 'ExpDashboard__selected ExpDashboard__link': 'ExpDashboard__link'}>Earn</Link>
+                    <Link to="/exp/task-history" className={this.state.optionSelected === 'history' ? 'ExpDashboard__selected ExpDashboard__link': 'ExpDashboard__link'}>History</Link>
+                    <Link to="/exp/achievements" className={this.state.optionSelected === 'achievements' ? 'ExpDashboard__selected ExpDashboard__link': 'ExpDashboard__link'}>Achievements</Link>
+                    <Link to="/exp/settings" className={this.state.optionSelected === 'settings' ? 'ExpDashboard__selected ExpDashboard__link': 'ExpDashboard__link'}>Settings</Link>
+                </div>
+                
     
                 <Switch>
                     <Redirect exact from="/exp" to="/exp/earn-exp"/>

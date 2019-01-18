@@ -1,32 +1,41 @@
 .ExpBar {
-    
+    margin-top: 1.4rem;
 
 
     &__container {
         width: 200px;
-        border: 1px solid yellow;
+        border: 1px solid rgb(120,120,120);
         position: relative;
         height: 4rem;
+        
     }
     &__progress {
 
     }
     &__level {
-        color: rgb(107, 43, 43);
+        color: black;
         position: absolute;
+        font-size: 2rem;
+        line-height: 2.4rem;
         top: 1rem;
-        left: 5rem;
+        left: 6.4rem;
+        
     }
 }
 
 .animation {
     transform: translateY(-100px);
+    
 }
 
 .exp-gain {
     opacity: 0;
     color: black;
-    
+    position: absolute;
+    height:0px;
+    color: black;
+    font-size: 3rem;
+   
 }
 @keyframes anim {
     0%   {top: 0px;}

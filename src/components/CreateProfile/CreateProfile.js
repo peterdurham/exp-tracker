@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './CreateProfile.scss';
 import { Link } from 'react-router-dom';
-import KeyboardEventHandler from 'react-keyboard-event-handler';
 
 import bard from '../../assets/images/profile/bard.jpg';
 import sorceress from '../../assets/images/profile/sorceress.jpg';

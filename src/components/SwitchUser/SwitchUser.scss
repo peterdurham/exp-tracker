@@ -78,6 +78,9 @@
         
         margin-top:2rem;
     }
+    &__selected {
+        border: 5px solid black;
+    }
     &__empty {
         padding: 20px;
         border:5px solid rgba(20,20,20,.9);

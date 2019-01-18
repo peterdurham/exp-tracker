@@ -10,10 +10,12 @@ const Status = ({ activeUser, favoriteFood, favoriteActivity, favoriteNature, op
     return (
         <div className={optionSelected === 'status' ? 'Status__selected status': 'status'}>
             <div className="status__name">{activeUser.name}</div>
+            <div className="status__icons">
+                <FavoritesIcon favorite = {favoriteFood}/>
+                <FavoritesIcon favorite = {favoriteActivity}/>
+                <FavoritesIcon favorite = {favoriteNature}/>
+            </div>
             
-            <FavoritesIcon favorite = {favoriteFood}/>
-            <FavoritesIcon favorite = {favoriteActivity}/>
-            <FavoritesIcon favorite = {favoriteNature}/>
             <ExpBar activeUser = {activeUser} 
               activeAnimation = {activeAnimation}
               animationExp = {animationExp}
