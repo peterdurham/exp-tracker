@@ -53,14 +53,14 @@ class CreateProfile extends Component {
     // }
     
     render() {
-        const { favoritesSelected, selectFavorite, nameInput, bindNameInput, createNewProfile } = this.props;
+        const { favoritesSelected, selectFavorite, nameInput, bindNameInput, createNewProfile, theme } = this.props;
         let selectedFood = favoritesSelected.food;
         let selectedActivity = favoritesSelected.activity;
         let selectedNature = favoritesSelected.nature;
         let profileImage = favoritesSelected.image;
 
         return (
-            <div className="CreateProfile">
+            <div className={'CreateProfile '+ (theme === 'forest' ? 'CreateProfile__forest' : '') + (theme==='ocean' ? 'CreateProfile__ocean' : '') + (theme==='mountains' ? 'CreateProfile__mountains' : '')}>
                 
                 <div className="CreateProfile__container">
                     <h1 className="CreateProfile__header">EXP -- New Profile</h1>

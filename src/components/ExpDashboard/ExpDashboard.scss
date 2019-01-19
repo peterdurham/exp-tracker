@@ -1,21 +1,39 @@
 .ExpDashboard {
-    background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4) ), url('../../assets/images/background3.jpg');
-    background-size: cover;
+    
+    
     padding-top:2rem;
     height: 100vh;
+    max-height: 100%;
 
+    &__forest {
+        background: url('../../assets/images/forest4.jpg');
+        background-size: cover;
+        background-repeat: repeat;
+        background-position: center;
+        
+    }
+    &__ocean {
+        background: url('../../assets/images/ocean4.jpg');
+        background-size: cover;
+        background-position: center;
+        
+    }
+    &__mountains {
+        background: url('../../assets/images/mountains4.jpg');
+        background-size: cover;
+        background-position: center;
+        
+    }
 
     &__active {
-        
         border: 2px solid $color-gold;
-        
     }
     &__status {
         display: flex;
         width: 100rem;
         margin: 0 auto;
         margin-bottom: 2rem;
-        background-color: $color-grey-lightest;
+        background-color: rgba($color-grey-darkest,.95);
     }
     &__nav {
         background-color: rgba($color-grey-darkest,.95);

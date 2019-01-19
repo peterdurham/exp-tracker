@@ -99,10 +99,10 @@ class ExpDashboard extends Component {
         
     }
     render() {
-        const { activeUser, favoriteActivity, favoriteFood, favoriteNature, completeTask, activeAnimation, triggerAnimation, animationExp, convertTime } = this.props;
+        const { activeUser, favoritesSelected, favoriteActivity, favoriteFood, favoriteNature, completeTask, activeAnimation, triggerAnimation, animationExp, convertTime, changeTheme, theme, selectFavorite, profileImage } = this.props;
         
         return(
-            <div className="ExpDashboard">
+            <div className={'ExpDashboard '+ (theme === 'forest' ? 'ExpDashboard__forest' : '') + (theme==='ocean' ? 'ExpDashboard__ocean' : '') + (theme==='mountains' ? 'ExpDashboard__mountains' : '')}>
                 <KeyboardEventHandler 
                     handleKeys={['up', 'down', 'left', 'right', 'enter']}
                     onKeyEvent={(key, e) => this.keyPress(key)}
@@ -164,7 +164,16 @@ class ExpDashboard extends Component {
                         optionSelected = {this.state.optionSelected}
                         highlightOption = {this.highlightOption}
                     />} />
-                    <Route exact path="/exp/settings" component={Settings} />
+                    <Route exact path="/exp/settings" render={() => <Settings 
+                        changeTheme = {changeTheme}
+                        theme = {theme}
+                        selectFavorite = {selectFavorite}
+                        profileImage = {profileImage}
+                        favoriteFood = {favoriteFood}
+                        favoriteActivity = {favoriteActivity}
+                        favoriteNature = {favoriteNature}
+                        favoritesSelected = {favoritesSelected}
+                    />} />
                 </Switch>
             </div>
         );

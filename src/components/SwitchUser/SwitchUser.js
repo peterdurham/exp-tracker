@@ -68,11 +68,11 @@ class SwitchUser extends Component {
     
 
     render() {
-        const { users, activeUser, switchActiveUser, deleteUser } = this.props;
+        const { users, activeUser, switchActiveUser, deleteUser, theme } = this.props;
         
     
         return (
-            <div className="SwitchUser">
+            <div  className={'SwitchUser '+ (theme === 'forest' ? 'SwitchUser__forest' : '') + (theme==='ocean' ? 'SwitchUser__ocean' : '') + (theme==='mountains' ? 'SwitchUser__mountains' : '')}>
                 <KeyboardEventHandler 
                     handleKeys={['up', 'down', 'left', 'right', 'enter']}
                     onKeyEvent={(key, e) => this.keyPress(key)}

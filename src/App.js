@@ -22,7 +22,8 @@ class App extends Component {
     animationExp: 0,
 
     nameInput: '',
-    favoritesSelected: { image:'bard', food: 'pizza', activity: 'walking', nature: 'trees'}
+    favoritesSelected: { image:'bard', food: 'pizza', activity: 'walking', nature: 'trees'},
+    theme: 'forest'
   }
   componentDidMount(){
     try {
@@ -195,6 +196,9 @@ class App extends Component {
   clearNameInput = () => {
     this.setState(() => ({ nameInput: '' }))
   }
+  changeTheme = (newTheme) => {
+    this.setState(() => ({ theme: newTheme }))
+  }
   
   render() {
     return (
@@ -205,6 +209,7 @@ class App extends Component {
             render={(props) => <MainMenu {...props} 
                 activeUser = {this.state.activeUser}
                 users = {this.state.users}
+                theme = {this.state.theme}
                 /> 
               }
           />
@@ -218,6 +223,7 @@ class App extends Component {
               createNewProfile = {this.createNewProfileHandler}
               clearNameInput = {this.clearNameInput}
               users={this.state.users}
+              theme={this.state.theme}
               />
             
             }
@@ -229,6 +235,7 @@ class App extends Component {
               activeUser = {this.state.activeUser} 
               switchActiveUser = {this.switchActiveUserHandler}
               deleteUser = {this.deleteUserHandler}
+              theme={this.state.theme}
             />
             } 
           />
@@ -239,11 +246,15 @@ class App extends Component {
               favoriteFood = {this.state.favoritesSelected.food}
               favoriteActivity = {this.state.favoritesSelected.activity}
               favoriteNature = {this.state.favoritesSelected.nature}
+              selectFavorite = {this.selectFavoriteHandler}
               completeTask = {this.completeTaskHandler}
               activeAnimation = {this.state.activeAnimation}
               triggerAnimation = {this.triggerAnimationHandler}
               animationExp = {this.state.animationExp}
               convertTime = {this.convertTimeHandler}
+              changeTheme = {this.changeTheme}
+              theme = {this.state.theme}
+              favoritesSelected = {this.state.favoritesSelected}
             />
           }
           />

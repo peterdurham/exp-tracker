@@ -1,8 +1,110 @@
 .Settings {
-    display: flex;
-    flex-wrap: wrap;
+    
+    
     width: 100rem;
     margin: 0 auto;
     background-color: $color-grey-lightest;
     padding: 2rem;
+
+
+    &__forest {
+        border-left: 1rem solid $color-black;
+    }
+    &__mountains {
+        border-right: 1rem solid $color-black;
+    }
+    &__themes {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+
+        &--header {
+            font-size: 2rem;
+            
+        }
+    }
+    &__theme {
+        position: relative;
+        height: 14rem;
+        border-top: 1rem solid $color-black;
+        border-bottom: 1rem solid $color-black;
+        
+        &--image {
+            width: 16rem;
+            height: 12rem;
+            position: relative;
+        }
+        &--text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            color:white;
+
+        }
+        &--selected {
+            border-top: 1rem solid $color-gold;
+            border-bottom: 1rem solid $color-gold;
+        }
+        
+    }
+    &__forestselected {
+        border-left: 1rem solid $color-gold;
+    }
+    &__mountainsselected {
+        border-right: 1rem solid $color-gold;
+    }
+
+    &__favorite {
+        border: 4px solid $color-red;
+    }
+
+
+    &__label {
+        color: $color-grey-lightest;
+        font-size: 2.4rem;
+        border-top: 1px solid $color-gold;
+        border-bottom: 1px solid $color-gold;
+        margin: 0 10rem;
+        background-color: rgba($color-grey-darkest, .95);
+    }
+    
+    &__foods {
+        display: flex;
+        justify-content: center;
+        margin: 1rem 0;
+        img {
+            width: 10rem;
+            height: 10rem;
+        }
+    }
+    &__activities {
+        display: flex;
+        justify-content: center;
+        margin: 1rem 0;
+        img {
+            width: 10rem;
+            height: 10rem;
+        }
+    }
+    &__natures {
+        display: flex;
+        justify-content: center;
+        margin: 1rem 0;
+        img {
+            width: 10rem;
+            height: 10rem;
+        }
+    }
+    &__favorite {
+        border: 3px solid rgba($color-red, .9);
+        border-radius: 2px;
+    }
+    &__selected {
+        border: 5px solid $color-red;
+
+    }
+
+
 }

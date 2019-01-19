@@ -45,12 +45,12 @@ class MainMenu extends Component {
 
 
     render() {
-        const { activeUser, users } = this.props;
+        const { activeUser, users, theme } = this.props;
         
         
         
         return (
-            <div className="MainMenu">
+            <div className={'MainMenu '+ (theme === 'forest' ? 'MainMenu__forest' : '') + (theme==='ocean' ? 'MainMenu__ocean' : '') + (theme==='mountains' ? 'MainMenu__mountains' : '')}>
                 <KeyboardEventHandler 
                     handleKeys={['up', 'down', 'enter']}
                     onKeyEvent={(key, e) => this.keyPress(key)}

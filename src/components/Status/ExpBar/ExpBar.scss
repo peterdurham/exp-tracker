@@ -7,7 +7,7 @@
         border: 1px solid $color-black;
         position: relative;
         height: 4rem;
-        
+        background-color: $color-grey-lightest;
     }
     &__progress {
 
@@ -16,7 +16,7 @@
         color: $color-black;
         position: absolute;
         font-size: 2rem;
-        line-height: 2.4rem;
+        line-height: 2rem;
         top: 1rem;
         left: 6.4rem;
         
@@ -30,10 +30,10 @@
 
 .exp-gain {
     opacity: 0;
-    color: $color-black;
+    color: $color-grey-lightest;
     position: absolute;
     height:0px;
-    color: $color-black;
+    
     font-size: 3rem;
    
 }
