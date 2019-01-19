@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import '../../assets/sass/main.scss';
 
-
+import DeleteModal from './DeleteModal/DeleteModal';
 import UserProfile from './UserProfile/UserProfile';
 
 import logo from '../../assets/images/crystal.jpg';
@@ -11,10 +11,8 @@ import logo from '../../assets/images/crystal.jpg';
 class SwitchUser extends Component {
     state = {
         optionSelected: '0',
-        
+        modalOpen: false,
     }
-
-    
 
     keyPress = (key) => {
         const {users, switchActiveUser} = this.props;
@@ -41,16 +39,36 @@ class SwitchUser extends Component {
             this.props.history.push('/exp');
         } else if(key==='enter' && optionSelected === 'mainmenu') {
             this.props.history.push('/');
-        } 
+        }
+        
+        else if(key==='enter' && optionSelected === '1' && users.length < 2) {
+            newOption = '1'
+        } else if(key==='enter' && optionSelected === '2' && users.length < 3) {
+            newOption = '2'
+        } else if(key==='enter' && optionSelected === 'deleteuser') {
+            this.setState(() => ({ modalOpen: true }))
+        }
+
+
+
+
+
         this.setState(() => ({ optionSelected: newOption }))
         
     }
     selectProfileHandler = (index) => {
         this.setState(() => ({optionSelected: index}));
     }
+    openDeleteModal = () => {
+        this.setState(() => ({ modalOpen: true }))
+    }
+    closeDeleteModal = () => {
+        this.setState(() => ({ modalOpen: false }))
+    }
+    
 
     render() {
-        const { users, activeUser, switchActiveUser } = this.props;
+        const { users, activeUser, switchActiveUser, deleteUser } = this.props;
         
     
         return (
@@ -117,10 +135,16 @@ class SwitchUser extends Component {
                         </Link>
                         <br/>
                         <div 
+                          onClick={() => this.openDeleteModal()}
                           onMouseOver={() => this.selectProfileHandler('deleteuser')}
                           className={this.state.optionSelected === 'deleteuser' ? "SwitchUser__link SwitchUser__deleteuser" : "SwitchUser__link"}>
                           Delete User
                         </div>
+                        {this.state.modalOpen &&
+                        <DeleteModal users={users} deleteUser={deleteUser} show={this.state.modalOpen} closeDeleteModal={this.closeDeleteModal}>
+                            
+                        </DeleteModal>
+                        }
                                 
                     </div>
                     

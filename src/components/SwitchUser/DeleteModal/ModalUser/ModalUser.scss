@@ -1,0 +1,26 @@
+.ModalUser {
+
+    display: flex;
+    margin: 2rem;
+    &__profile {
+        width: 9rem;
+        height: 12rem;
+        margin-left: 5rem;
+    }
+    &__name {
+        color: $color-grey;
+        font-size: 4rem;
+        margin-left: 7rem;
+        line-height: 10rem;
+        width: 15rem;
+    }
+    &__level {
+        color: $color-red;
+        font-size: 2rem;
+        margin-left: 5rem;
+        line-height: 10rem;
+    }
+    &__selected {
+        border: 2px solid $color-gold;
+    }
+}

@@ -163,6 +163,13 @@ class App extends Component {
   endAnimationHandler = () => {
     this.setState(() => ({activeAnimation: false}))
   }
+  deleteUserHandler = (index) => {
+    let users = [...this.state.users]
+    users.splice(index, 1);
+    this.setState(() => ({ users }))
+    
+    
+  }
   
   render() {
     return (
@@ -194,6 +201,7 @@ class App extends Component {
               users = {this.state.users}
               activeUser = {this.state.activeUser} 
               switchActiveUser = {this.switchActiveUserHandler}
+              deleteUser = {this.deleteUserHandler}
             />
             } 
           />

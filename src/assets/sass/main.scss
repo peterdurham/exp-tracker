@@ -23,7 +23,11 @@
 
 @import "../../components/Status/Status";
 @import "../../components/Status/ExpBar/ExpBar";
+@import "../../components/SwitchUser/DeleteModal/DeleteModal.scss";
+@import "../../components/SwitchUser/DeleteModal/ModalUser/ModalUser.scss";
+@import "../../components/SwitchUser/DeleteModal/ModalBackdrop/ModalBackdrop.scss";
 @import "../../components/SwitchUser/SwitchUser";
+
 
 @import "../../components/SwitchUser/UserProfile/UserProfile";
 @import "../../components/Task/Task";
