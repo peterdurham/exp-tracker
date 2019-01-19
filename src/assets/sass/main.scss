@@ -1,29 +1,29 @@
 @import url(https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 
 
-@import "abstracts/variables";
+@import "./abstracts/variables";
 
-@import "base/animations";
-@import "base/base";
-@import "base/typography";
-@import "base/utilities";
+@import "./base/animations";
+@import "./base/base";
+@import "./base/typography";
+@import "./base/utilities";
 
-@import "components/button";
+@import "./components/button";
 
-@import "../../App.scss";
-@import "../../components/CreateProfile/CreateProfile.scss";
-@import "../../components/ExpDashboard/ExpDashboard.scss";
-@import "../../components/ExpDashboard/Achievements/Achievements.scss";
-@import "../../components/ExpDashboard/EarnExp/EarnExp.scss";
-@import "../../components/ExpDashboard/TaskHistory/TaskHistory.scss";
-@import "../../components/ExpDashboard/Settings/Settings.scss";
-@import "../../components/FavoritesIcon/FavoritesIcon.scss";
-@import "../../components/Header/Header.scss";
-@import "../../components/MainMenu/MainMenu.scss";
+@import "../../App";
+@import "../../components/CreateProfile/CreateProfile";
+@import "../../components/ExpDashboard/ExpDashboard";
+@import "../../components/ExpDashboard/Achievements/Achievements";
+@import "../../components/ExpDashboard/EarnExp/EarnExp";
+@import "../../components/ExpDashboard/TaskHistory/TaskHistory";
+@import "../../components/ExpDashboard/Settings/Settings";
+@import "../../components/FavoritesIcon/FavoritesIcon";
+@import "../../components/Header/Header";
+@import "../../components/MainMenu/MainMenu";
 
-@import "../../components/Status/Status.scss";
-@import "../../components/Status/ExpBar/ExpBar.scss";
-@import "../../components/SwitchUser/SwitchUser.scss";
+@import "../../components/Status/Status";
+@import "../../components/Status/ExpBar/ExpBar";
+@import "../../components/SwitchUser/SwitchUser";
 
-@import "../../components/SwitchUser/UserProfile/UserProfile.scss";
-@import "../../components/Task/Task.scss";
+@import "../../components/SwitchUser/UserProfile/UserProfile";
+@import "../../components/Task/Task";

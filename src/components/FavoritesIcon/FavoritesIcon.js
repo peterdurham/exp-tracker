@@ -1,5 +1,5 @@
 import React from 'react';
-import './FavoritesIcon.scss';
+import '../../assets/sass/main.scss';
 
 import pizza from '../../assets/images/food/pizza.png';
 import carrots from '../../assets/images/food/carrot.png';

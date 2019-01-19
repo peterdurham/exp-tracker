@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
-import './SwitchUser.scss';
+import '../../assets/sass/main.scss';
 
 
 import UserProfile from './UserProfile/UserProfile';
@@ -39,7 +39,7 @@ class SwitchUser extends Component {
         } else if(key==='enter' && optionSelected === '2' && users.length > 2) {
             switchActiveUser(users[2].name);
             this.props.history.push('/exp');
-        } else if(key==='enter' && optionSelected === '10') {
+        } else if(key==='enter' && optionSelected === 'mainmenu') {
             this.props.history.push('/');
         } 
         this.setState(() => ({ optionSelected: newOption }))
@@ -65,7 +65,7 @@ class SwitchUser extends Component {
                     <h1 className="SwitchUser__header">EXP -- Switch User</h1>
                     <div className="SwitchUser__main">
                         
-                        <div className="SwitchUser__main--text">Choose a profile:</div>
+                        <div className="SwitchUser__main--text">Select a user:</div>
                         <div className="SwitchUser__main--subtext">logged in as <span className="SwitchUser__main--name">{activeUser.name}</span></div>
                         
                         <div className="SwitchUser__users">
@@ -110,13 +110,15 @@ class SwitchUser extends Component {
                                /> : <UserProfile name="empty" index="2" selectProfile = {this.selectProfileHandler} optionSelected = {this.state.optionSelected}/>}
                         </div>
                         <Link to="/" 
-                        onMouseOver={() => this.selectProfileHandler('10')}
-                        className={this.state.optionSelected === 'mainmenu' ? "SwitchUser__link SwitchUser__selected" : "SwitchUser__link"}
+                        onMouseOver={() => this.selectProfileHandler('mainmenu')}
+                        className={this.state.optionSelected === 'mainmenu' ? "SwitchUser__link SwitchUser__mainmenu" : "SwitchUser__link"}
                         >
                         Main Menu
                         </Link>
                         <br/>
-                        <div className={this.state.optionSelected === 'deleteuser' ? "SwitchUser__link SwitchUser__selected" : "SwitchUser__link"}>
+                        <div 
+                          onMouseOver={() => this.selectProfileHandler('deleteuser')}
+                          className={this.state.optionSelected === 'deleteuser' ? "SwitchUser__link SwitchUser__deleteuser" : "SwitchUser__link"}>
                           Delete User
                         </div>
                                 

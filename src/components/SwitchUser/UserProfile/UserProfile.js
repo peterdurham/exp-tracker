@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './UserProfile.scss';
+import '../../../assets/sass/main.scss';
 
 import bard from '../../../assets/images/profile/bard.jpg';
 import sorceress from '../../../assets/images/profile/sorceress.jpg';

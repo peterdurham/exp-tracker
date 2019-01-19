@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../../assets/sass/main.scss';
 
 const TaskHistory = ({activeUser, optionSelected, highlightOption}) => {
     

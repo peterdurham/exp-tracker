@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './CreateProfile.scss';
+import '../../assets/sass/main.scss';
 import { Link } from 'react-router-dom';
 
 import bard from '../../assets/images/profile/bard.jpg';
@@ -63,12 +63,18 @@ class CreateProfile extends Component {
             <div className="CreateProfile">
                 
                 <div className="CreateProfile__container">
-                    <h1>EXP -- New Profile</h1>
+                    <h1 className="CreateProfile__header">EXP -- New Profile</h1>
                     <div className="CreateProfile__main">
                         
                         
                     
-                        <input onChange={(e)=>bindNameInput(e)} value={nameInput} type="text" className={this.state.optionSelected==='input' ? "CreateProfile__input CreateProfile__selected" : "CreateProfile__input"} />
+                        <input 
+                          placeholder="Enter name"
+                          onChange={(e)=>bindNameInput(e)} 
+                          value={nameInput} 
+                          type="text" 
+                          className={this.state.optionSelected==='input' ? "CreateProfile__input CreateProfile__selected" : "CreateProfile__input"} 
+                        />
                         
                         
                         
@@ -114,7 +120,7 @@ class CreateProfile extends Component {
     
                         <Link 
                             to="/exp"
-                            className={this.state.optionSelected === 'createprofile' ? "create__button CreateProfile__selected" : "create__button"}
+                            className={this.state.optionSelected === 'createprofile' ? "CreateProfile__button CreateProfile__create" : "CreateProfile__button"}
                             onClick={createNewProfile}
                             onMouseOver={()=>this.selectOption('createprofile')}
                             >Create Profile
@@ -122,7 +128,7 @@ class CreateProfile extends Component {
                         <br/>
                         <Link 
                             to="/"
-                            className={this.state.optionSelected === 'mainmenu' ? "create__button CreateProfile__selected" : "create__button"}
+                            className={this.state.optionSelected === 'mainmenu' ? "CreateProfile__button CreateProfile__mainmenu" : "CreateProfile__button"}
                             onMouseOver={()=>this.selectOption('mainmenu')}
                             >
                         Back to Main Menu

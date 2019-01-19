@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Route, Switch, Redirect } from 'react-router-dom';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
+import '../../assets/sass/main.scss';
 
 import Header from '../Header/Header';
 import Status from '../Status/Status';
@@ -11,7 +12,7 @@ import Settings from '../ExpDashboard/Settings/Settings';
 
 class ExpDashboard extends Component {
     state = {
-        optionSelected: 'status',
+        optionSelected: 'earn',
     }
 
     highlightOption = (option) => {
@@ -22,13 +23,11 @@ class ExpDashboard extends Component {
         let newOption;
         const { completeTask } = this.props;
 
-        if(key==='up' && !optionSelected){
-            newOption='status';
-        }
+        
 
 
-        if((key==='up' && (optionSelected === 'status' || optionSelected === 'earn' || optionSelected === 'history' || optionSelected === 'achievements' || optionSelected === 'settings')) || (key==='left' && (optionSelected === 'status' || optionSelected === 'mainmenu')) || (key==='enter' && optionSelected === 'status')) {
-            newOption = 'status';
+        if((key==='up' && (optionSelected === 'earn' || optionSelected === 'history' || optionSelected === 'achievements' || optionSelected === 'settings')) || (key==='left' && (optionSelected === 'mainmenu' || optionSelected === 'switchuser'))) {
+            newOption = 'mainmenu';
         } else if((key==='right' && optionSelected === 'status') || (key==='up' && optionSelected === 'mainmenu') || (key==='left' && optionSelected === 'switchuser')) {
             newOption = 'mainmenu';
         } else if((key==='down' && (optionSelected === 'status' || optionSelected === 'mainmenu' || optionSelected === 'switchuser')) || (key==='left' && (optionSelected === 'earn' || optionSelected === 'history')) || (key==='up' && (optionSelected === 'coding' || optionSelected === 'read' || optionSelected === 'socialize' || optionSelected === 'weights'))) {
@@ -119,12 +118,12 @@ class ExpDashboard extends Component {
                         activeAnimation = {activeAnimation}
                         animationExp = {animationExp}
                     />
-                    <Link to="/" className={this.state.optionSelected === 'mainmenu' ? 'ExpDashboard__selected ExpDashboard__menulink': 'ExpDashboard__menulink'}>
+                    <Link to="/" className={this.state.optionSelected === 'mainmenu' ? 'ExpDashboard__mainmenu ExpDashboard__menulink': 'ExpDashboard__menulink'}>
                     Main Menu
                     </Link>
                     <Link 
                     to="/switch-user"
-                    className={this.state.optionSelected === 'switchuser' ? 'ExpDashboard__selected ExpDashboard__menulink': 'ExpDashboard__menulink'}
+                    className={this.state.optionSelected === 'switchuser' ? 'ExpDashboard__switchuser ExpDashboard__menulink': 'ExpDashboard__menulink'}
                     >Switch User
                     </Link>
                 </div>

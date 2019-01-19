@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 
-import './MainMenu.scss';
+import '../../assets/sass/main.scss';
 
 class MainMenu extends Component {
     state = {
@@ -53,36 +53,39 @@ class MainMenu extends Component {
                     handleKeys={['up', 'down', 'enter']}
                     onKeyEvent={(key, e) => this.keyPress(key)}
                 />
+                <div className="MainMenu__container">
+                    <h1 className="MainMenu__header">EXP Tracker</h1>
+                
+                    <ul>
+                        <li>
+                            <Link 
+                                to="/create-profile"
+                                onMouseOver={()=>this.highlightOption('newProfile')}
+                                className={this.state.optionSelected==='newProfile' ? 'MainMenu__option MainMenu__selected' : 'MainMenu__option'}
+                                >New Profile
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                to="/exp"
+                                onMouseOver={()=>this.highlightOption('continue')}
+                                className={this.state.optionSelected==='continue' ? 'MainMenu__option MainMenu__selected' : 'MainMenu__option'}
+                                >Continue as {activeUser.name}
+                            </Link>
+                        </li>
+                        <li>
+                            <Link 
+                                to="/switch-user"
+                                onMouseOver={()=>this.highlightOption('switchUser')}
+                                className={this.state.optionSelected==='switchUser' ? 'MainMenu__option MainMenu__selected' : 'MainMenu__option'}
+                                >Switch User
+                            </Link>
+                        </li>
+                    </ul>
+
+                </div>
                 
                 
-                <h1 className="MainMenu__header">EXP</h1>
-                
-                <ul>
-                    <li>
-                        <Link 
-                            to="/create-profile"
-                            onMouseOver={()=>this.highlightOption('newProfile')}
-                            className={this.state.optionSelected==='newProfile' ? 'MainMenu__option MainMenu__selected' : 'MainMenu__option'}
-                            >New Profile
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            to="/exp"
-                            onMouseOver={()=>this.highlightOption('continue')}
-                            className={this.state.optionSelected==='continue' ? 'MainMenu__option MainMenu__selected' : 'MainMenu__option'}
-                            >Continue as {activeUser.name}
-                        </Link>
-                    </li>
-                    <li>
-                        <Link 
-                            to="/switch-user"
-                            onMouseOver={()=>this.highlightOption('switchUser')}
-                            className={this.state.optionSelected==='switchUser' ? 'MainMenu__option MainMenu__selected' : 'MainMenu__option'}
-                            >Switch User
-                        </Link>
-                    </li>
-                </ul>
                 
                 
                 

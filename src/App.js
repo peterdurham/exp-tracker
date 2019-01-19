@@ -164,7 +164,6 @@ class App extends Component {
     this.setState(() => ({activeAnimation: false}))
   }
   
-
   render() {
     return (
       <Router>

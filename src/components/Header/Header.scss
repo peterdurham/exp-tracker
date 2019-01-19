@@ -1,12 +1,15 @@
 .Header {
     color: white;
-    background-color: rgb(240,240,240);
-    text-align: left;
+    background-color: $color-grey-lightest;
+    text-align: center;
     font-size: 1.4rem;
     width: 40rem;
-    background-color: rgba(22,22,22,.9);
-    border-top: 1px solid gold;
-    border-bottom: 1px solid gold;
+    background-color: rgba($color-grey-darkest,.9);
+    border-top: 2px solid $color-gold;
+    border-bottom: 2px solid $color-gold;
+    margin-bottom: 1rem;
+
+    
     &__container {
         width: 100rem;
         margin: 0 auto;

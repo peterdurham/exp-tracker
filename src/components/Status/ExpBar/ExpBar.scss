@@ -1,10 +1,10 @@
 .ExpBar {
-    margin-top: 1.4rem;
+    
 
 
     &__container {
-        width: 200px;
-        border: 1px solid rgb(120,120,120);
+        width: 20rem;
+        border: 1px solid $color-black;
         position: relative;
         height: 4rem;
         
@@ -13,7 +13,7 @@
 
     }
     &__level {
-        color: black;
+        color: $color-black;
         position: absolute;
         font-size: 2rem;
         line-height: 2.4rem;
@@ -30,10 +30,10 @@
 
 .exp-gain {
     opacity: 0;
-    color: black;
+    color: $color-black;
     position: absolute;
     height:0px;
-    color: black;
+    color: $color-black;
     font-size: 3rem;
    
 }

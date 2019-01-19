@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../../../assets/sass/main.scss';
 import Task from '../../Task/Task';
 
 const EarnExp = ({ completeTask, optionSelected, highlightOption, triggerAnimation }) => {

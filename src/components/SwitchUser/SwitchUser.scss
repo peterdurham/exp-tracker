@@ -28,17 +28,18 @@
         border: 1px solid white;
     }
     &__header {
-        border-top:1px solid white;
-        border-bottom: 1px solid white;
-        width:50rem;
-        background-color: rgba(22,22,22,.9);
-        color: rgb(240,240,240);
+        border-top:2px solid $color-gold;
+        border-bottom: 2px solid $color-gold;
+        width: 50rem;
+        background-color: rgba($color-grey-darkest,.9);
+        color: $color-grey-lightest;
         font-size: 3rem;
-        padding: 10px 0;
+        padding: 1rem 0;
         line-height: 5rem;
+        margin-bottom: 2rem;
     }
     &__main {
-        background-color: rgba(22,22,22,.9);
+        background-color: rgba($color-grey-darkest,.95);
         margin-top:-1rem;
         height:80rem;
         padding-top: 1rem;
@@ -68,25 +69,30 @@
         justify-content: center;
     }
     &__link {
-        color: rgb(240,240,240);
+        color: white;
         text-decoration: none;
-        font-size: 3rem;
-        background: linear-gradient(rgba(67,89,4,1), rgba(58,81,6,1));
-        display: inline-block;
-        padding: 0 1rem;
-        border: 3px solid rgb(115,87,45);
+        font-size: 2.4rem;
+        // background: linear-gradient(rgba(67,89,4,1), rgba(58,81,6,1));
         
+        background-color: $color-grey-darkest;
+        display: inline-block;
+        padding: .5rem 2rem;
+        border: 2px solid $color-gold;
+        border-radius: 3rem;
         margin-top:2rem;
     }
-    &__selected {
-        border: 5px solid black;
+    &__mainmenu {
+        background-color: $color-green;
+    }
+    &__deleteuser {
+        background-color: $color-red;
     }
     &__empty {
         padding: 20px;
-        border:5px solid rgba(20,20,20,.9);
-        background-color: rgba(22,22,22,.9);
-        width:240px;
-        height:350px;
+        border:5px solid rgba(20,20,20,1);
+        background-color: rgba($color-grey-darkest,1);
+        width: 24rem;
+        height: 35rem;
         color: white;
     }
 }
