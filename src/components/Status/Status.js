@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import FavoritesIcon from "../FavoritesIcon/FavoritesIcon";
 import ExpBar from "../Status/ExpBar/ExpBar";
 
@@ -54,6 +54,16 @@ const Status = ({
       />
     </div>
   );
+};
+
+Status.propTypes = {
+  activeUser: PropTypes.object,
+  favoriteFood: PropTypes.string,
+  favoriteActivity: PropTypes.string,
+  favoriteNature: PropTypes.string,
+  optionSelected: PropTypes.string,
+  activeAnimation: PropTypes.bool,
+  animationExp: PropTypes.number
 };
 
 export default Status;

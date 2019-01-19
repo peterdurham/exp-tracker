@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../../../assets/sass/main.scss";
+import PropTypes from "prop-types";
 
 import forest from "../../../assets/images/backgrounds/forest4.jpg";
 import ocean from "../../../assets/images/backgrounds/ocean2.jpg";
@@ -416,5 +417,11 @@ class Settings extends Component {
     );
   }
 }
+Settings.propTypes = {
+  changeTheme: PropTypes.func,
+  theme: PropTypes.string,
+  selectFavorite: PropTypes.func,
+  favoritesSelected: PropTypes.object
+};
 
 export default Settings;

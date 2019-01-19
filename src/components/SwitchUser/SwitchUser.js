@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import KeyboardEventHandler from "react-keyboard-event-handler";
 import "../../assets/sass/main.scss";
-
+import PropTypes from "prop-types";
 import DeleteModal from "./DeleteModal/DeleteModal";
 import UserProfile from "./UserProfile/UserProfile";
 
@@ -219,5 +219,11 @@ class SwitchUser extends Component {
     );
   }
 }
-
+SwitchUser.propTypes = {
+  switchActiveUser: PropTypes.func,
+  activeUser: PropTypes.object,
+  users: PropTypes.array,
+  deleteUser: PropTypes.func,
+  theme: PropTypes.string
+};
 export default SwitchUser;

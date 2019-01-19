@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import PropTypes from "prop-types";
 import "../../../assets/sass/main.scss";
 
 import bard from "../../../assets/images/profile/bard.jpg";
@@ -40,8 +40,7 @@ const UserProfile = ({
   profileImage,
   index,
   selectProfile,
-  optionSelected,
-  level
+  optionSelected
 }) => {
   let profile;
   let food;
@@ -155,5 +154,15 @@ const UserProfile = ({
     </>
   );
 };
-
+UserProfile.propTypes = {
+  switchActiveUser: PropTypes.func,
+  name: PropTypes.string,
+  favoriteFood: PropTypes.string,
+  favoriteActivity: PropTypes.string,
+  favoriteNature: PropTypes.string,
+  profileImage: PropTypes.string,
+  index: PropTypes.string,
+  selectProfile: PropTypes.func,
+  optionSelected: PropTypes.string
+};
 export default UserProfile;

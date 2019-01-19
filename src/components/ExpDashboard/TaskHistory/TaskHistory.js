@@ -1,14 +1,10 @@
 import React from "react";
 import "../../../assets/sass/main.scss";
+import PropTypes from "prop-types";
 
 import CompletedTask from "./CompletedTask/CompletedTask";
 
-const TaskHistory = ({
-  activeUser,
-  optionSelected,
-  highlightOption,
-  convertTime
-}) => {
+const TaskHistory = ({ activeUser, convertTime }) => {
   let recentTasks = Object.assign([], activeUser.tasksCompleted).reverse();
   const first10 = recentTasks.filter((task, index) => index < 10);
   const second10 = recentTasks.filter((task, index) => index > 9 && index < 20);
@@ -53,6 +49,11 @@ const TaskHistory = ({
       </div>
     </div>
   );
+};
+
+TaskHistory.propTypes = {
+  activeUser: PropTypes.object,
+  convertTime: PropTypes.func
 };
 
 export default TaskHistory;

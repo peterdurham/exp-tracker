@@ -1,5 +1,7 @@
 import React from "react";
 import "../../assets/sass/main.scss";
+import PropTypes from "prop-types";
+
 import coding from "../../assets/images/tasks/coding.png";
 import cookfood from "../../assets/images/tasks/cookfood.png";
 import read from "../../assets/images/tasks/read.png";
@@ -97,5 +99,10 @@ const Task = ({ taskName, completeTask, optionSelected, highlightOption }) => {
     </div>
   );
 };
-
+Task.propTypes = {
+  taskName: PropTypes.string,
+  completeTask: PropTypes.func,
+  optionSelected: PropTypes.string,
+  highlightOption: PropTypes.func
+};
 export default Task;

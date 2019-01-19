@@ -1,7 +1,7 @@
 import React from "react";
 import "../../../assets/sass/main.scss";
 import Task from "../../Task/Task";
-
+import PropTypes from "prop-types";
 const EarnExp = ({
   completeTask,
   optionSelected,
@@ -42,5 +42,10 @@ const EarnExp = ({
     </div>
   );
 };
-
+EarnExp.propTypes = {
+  completeTask: PropTypes.func,
+  optionSelected: PropTypes.string,
+  highlightOption: PropTypes.func,
+  triggerAnimation: PropTypes.func
+};
 export default EarnExp;

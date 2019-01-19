@@ -1,5 +1,6 @@
 import React from "react";
 import "../../../../assets/sass/main.scss";
+import PropTypes from "prop-types";
 
 import coding from "../../../../assets/images/tasks/coding.png";
 import cookfood from "../../../../assets/images/tasks/cookfood.png";
@@ -131,10 +132,14 @@ const AchievementTask = ({ name, times }) => {
 
   return (
     <div className="AchievementTask">
-      {label}
-      {image}
+      {label} ({times}){image}
     </div>
   );
+};
+
+AchievementTask.propTypes = {
+  name: PropTypes.string,
+  times: PropTypes.number
 };
 
 export default AchievementTask;

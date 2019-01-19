@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../../assets/sass/main.scss";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import bard from "../../assets/images/profile/bard.jpg";
 import sorceress from "../../assets/images/profile/sorceress.jpg";
@@ -42,10 +43,6 @@ class CreateProfile extends Component {
       this.setState(() => ({ optionSelected: "" }));
     }
   };
-
-  // selectIconHandler = (option) => {
-  //     this.setState(() => ({optionSelected: option}));
-  // }
 
   render() {
     const {
@@ -517,4 +514,12 @@ class CreateProfile extends Component {
   }
 }
 
+CreateProfile.propTypes = {
+  favoritesSelected: PropTypes.object,
+  selectedFavorite: PropTypes.string,
+  nameInput: PropTypes.string,
+  bindNameInput: PropTypes.func,
+  createNewProfile: PropTypes.func,
+  theme: PropTypes.string
+};
 export default CreateProfile;

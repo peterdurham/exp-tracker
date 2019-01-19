@@ -1,5 +1,6 @@
 import React from "react";
 import "../../../assets/sass/main.scss";
+import PropTypes from "prop-types";
 
 const ExpBar = ({ activeUser, activeAnimation, animationExp }) => {
   return (
@@ -23,4 +24,9 @@ const ExpBar = ({ activeUser, activeAnimation, animationExp }) => {
   );
 };
 
+ExpBar.propTypes = {
+  activeUser: PropTypes.object,
+  activeAnimation: PropTypes.bool,
+  animationExp: PropTypes.number
+};
 export default ExpBar;

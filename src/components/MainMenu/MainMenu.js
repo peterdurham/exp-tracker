@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import KeyboardEventHandler from "react-keyboard-event-handler";
+import PropTypes from "prop-types";
 
 import "../../assets/sass/main.scss";
 
@@ -118,5 +119,9 @@ class MainMenu extends Component {
     );
   }
 }
-
+MainMenu.propTypes = {
+  activeUser: PropTypes.object,
+  users: PropTypes.array,
+  theme: PropTypes.string
+};
 export default MainMenu;

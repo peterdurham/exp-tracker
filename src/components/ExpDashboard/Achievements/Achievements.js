@@ -1,9 +1,9 @@
 import React from "react";
 import "../../../assets/sass/main.scss";
-
+import PropTypes from "prop-types";
 import AchievementTask from "./AchievementTask/AchievementTask";
 
-const Achievements = ({ activeUser, optionSelected, highlightOption }) => {
+const Achievements = ({ activeUser }) => {
   const tasks = [
     "coding",
     "cookfood",
@@ -58,6 +58,10 @@ const Achievements = ({ activeUser, optionSelected, highlightOption }) => {
       </div>
     </div>
   );
+};
+
+Achievements.propTypes = {
+  activeUser: PropTypes.object
 };
 
 export default Achievements;

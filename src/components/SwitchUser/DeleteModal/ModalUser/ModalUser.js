@@ -1,5 +1,6 @@
 import React from "react";
 import "../../../../assets/sass/main.scss";
+import PropTypes from "prop-types";
 
 import bard from "../../../../assets/images/profile/bard.jpg";
 import sorceress from "../../../../assets/images/profile/sorceress.jpg";
@@ -35,5 +36,10 @@ const ModalUser = ({ user, index, selectOption, optionSelected }) => {
     </div>
   );
 };
-
+ModalUser.propTypes = {
+  user: PropTypes.object,
+  index: PropTypes.number,
+  selectOption: PropTypes.func,
+  optionSelected: PropTypes.string
+};
 export default ModalUser;

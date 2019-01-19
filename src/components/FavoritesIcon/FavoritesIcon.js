@@ -1,5 +1,6 @@
 import React from "react";
 import "../../assets/sass/main.scss";
+import PropTypes from "prop-types";
 
 import pizza from "../../assets/images/food/pizza.png";
 import carrots from "../../assets/images/food/carrot.png";
@@ -66,6 +67,9 @@ const FavoritesIcon = ({ favorite }) => {
   }
 
   return <div>{image}</div>;
+};
+FavoritesIcon.propTypes = {
+  favorite: PropTypes.string
 };
 
 export default FavoritesIcon;

@@ -25,7 +25,7 @@ class App extends Component {
       nature: "trees"
     },
     theme: "forest"
-  }
+  };
   componentDidMount() {
     try {
       const jsonUsers = localStorage.getItem("users");

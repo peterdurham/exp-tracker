@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, Route, Switch, Redirect } from "react-router-dom";
 import KeyboardEventHandler from "react-keyboard-event-handler";
 import "../../assets/sass/main.scss";
+import PropTypes from "prop-types";
 
 import Header from "../Header/Header";
 import Status from "../Status/Status";
@@ -418,5 +419,22 @@ class ExpDashboard extends Component {
     );
   }
 }
+
+ExpDashboard.propTypes = {
+  activeUser: PropTypes.object,
+  favoritesSelected: PropTypes.object,
+  favoriteActivity: PropTypes.string,
+  favoriteFood: PropTypes.string,
+  favoriteNature: PropTypes.string,
+  completeTask: PropTypes.func,
+  activeAnimation: PropTypes.bool,
+  triggerAnimation: PropTypes.func,
+  animationExp: PropTypes.number,
+  convertTime: PropTypes.func,
+  changeTheme: PropTypes.func,
+  theme: PropTypes.string,
+  selectFavorite: PropTypes.func,
+  profileImage: PropTypes.string
+};
 
 export default ExpDashboard;

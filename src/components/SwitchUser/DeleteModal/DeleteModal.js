@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../../../assets/sass/main.scss";
+import PropTypes from "prop-types";
 
 import ModalUser from "./ModalUser/ModalUser";
 import ModalBackdrop from "./ModalBackdrop/ModalBackdrop";
@@ -52,5 +53,10 @@ class DeleteModal extends Component {
     );
   }
 }
-
+DeleteModal.propTypes = {
+  users: PropTypes.array,
+  deleteUser: PropTypes.func,
+  show: PropTypes.bool,
+  closeDeleteModal: PropTypes.func
+};
 export default DeleteModal;

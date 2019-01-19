@@ -1,5 +1,6 @@
 import React from "react";
 import "../../../../assets/sass/main.scss";
+import PropTypes from "prop-types";
 
 import coding from "../../../../assets/images/tasks/coding.png";
 import cookfood from "../../../../assets/images/tasks/cookfood.png";
@@ -125,6 +126,13 @@ const CompletedTask = ({ name, exp, time, convertTime }) => {
       <div className="CompletedTask__exp">+{exp} exp</div>
     </div>
   );
+};
+
+CompletedTask.propTypes = {
+  name: PropTypes.string,
+  exp: PropTypes.number,
+  time: PropTypes.number,
+  convertTime: PropTypes.func
 };
 
 export default CompletedTask;
