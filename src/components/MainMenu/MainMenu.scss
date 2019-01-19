@@ -32,6 +32,7 @@
         padding: 2rem;
         border-radius: 2px;
         box-shadow: 0 1px 2px $color-grey-darkest;
+        
         ul li {
             list-style: none;
         }
@@ -54,8 +55,13 @@
         color: grey;
         text-decoration: none;
         border: 2px solid $color-gold;
-        font-size: 3rem;
+        font-size: 2.6rem;
         border-radius: 10rem;
+
+        @include respond(phone) {
+          padding: .5rem 1.5rem;
+          font-size: 2.4rem;
+        }
     }
     &__selected {
         background-color: rgba($color-red, .9);

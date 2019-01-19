@@ -6,6 +6,14 @@
     padding: 4rem;
     padding-top: 2rem;
     padding-left: 8rem;
+
+    @include respond(tab-land) {
+        width:80rem;
+    }
+    @include respond(tab-port) {
+        width:60rem;
+    }
+    
     &__label {
         font-size: 3rem;
         margin-bottom: 1rem;

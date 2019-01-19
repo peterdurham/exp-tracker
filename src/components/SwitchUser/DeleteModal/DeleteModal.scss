@@ -1,11 +1,24 @@
 .DeleteModal {
     width: 60rem;
-    height: 60rem;
+    height: 62rem;
     background-color: rgba($color-grey-darkest,1);
     position: absolute;
-    top: 10rem;
-    left: 30rem;
+    top: 4rem;
+    left: 20rem;
     z-index: 10;
+
+    @include respond(tab-land) {
+        width: 50rem;
+        left: 15rem;
+        height: 58rem;
+    }
+    @include respond(tab-port) {
+        left: 10rem;
+    }
+    @include respond(phone) {
+        left: 5rem;
+    }
+
 
     &__user {
         border: 1px solid $color-grey;
@@ -23,7 +36,9 @@
         padding: .5rem 1.5rem;
         border-radius: 10rem;
         color: $color-grey;
+        cursor: pointer;
     }
+    
     &__delete {
         background-color: $color-red;
     }

@@ -28,6 +28,16 @@
         width:100rem;
         margin-left: auto;
         margin-right: auto;
+        
+        @include respond(tab-land) {
+            width: 80rem;
+        }
+        @include respond(tab-port) {
+            width: 70rem;
+        }
+        @include respond(phone) {
+            width: 60rem;
+        }
     }
     &__button {
         display: inline-block;
@@ -49,6 +59,18 @@
         line-height: 5rem;
         margin-bottom: 2rem;
         position: relative;
+
+        @include respond(tab-land) {
+            width: 36rem;
+            font-size: 2.4rem;
+        }
+        @include respond(tab-port) {
+            width: 32rem;
+        }
+        @include respond(phone) {
+            width: 25rem;
+            font-size: 2rem;
+        }
     }
     &__main {
         background-color: rgba($color-grey-darkest,.95);
@@ -75,6 +97,18 @@
         display: flex;
         width: 100rem;
         justify-content: center;
+        
+        @include respond(tab-land) {
+            width: 80rem;
+        }
+        @include respond(tab-port) {
+            width:70rem;
+           
+        }
+        @include respond(phone) {
+            width: 60rem;
+        }
+        
     }
     &__link {
         color: white;

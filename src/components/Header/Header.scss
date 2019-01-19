@@ -9,6 +9,13 @@
     border-bottom: 2px solid $color-gold;
     margin-bottom: 1rem;
 
+    @include respond(tab-land) {
+        width:30rem;
+        margin-left: 10rem;
+    }
+    @include respond(tab-port) {
+        margin-left: 10rem;
+    }
     
     &__container {
         width: 100rem;

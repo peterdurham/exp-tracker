@@ -106,7 +106,7 @@ const UserProfile = ({switchActiveUser, name, favoriteFood, favoriteActivity, fa
                     to="/exp">
 
                     
-                      <div className="UserProfile__name">{name}</div> 
+                    <div className="UserProfile__name">{name}</div> 
                       
                     
                     {profile}

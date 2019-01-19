@@ -1,26 +1,56 @@
 .CompletedTask {
     display: flex;
+    justify-content: center;
     background-color: white;
     padding: 0 2rem;
     height: 4rem;
+    
+    @include respond(tab-port) {
+        height: 2.5rem;
+    }
+
     &__image {
         width: 4rem;
         height: 4rem;
+        @include respond(tab-land) {
+            width: 3rem;
+            height: 3rem;
+        }
+        @include respond(tab-port) {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
     }
     &__label {
         font-size: 1.6rem;
-        margin-left: .5rem;
-        width: 12rem;
+        width: 14rem;
         margin-left: 3rem;
+        
+        @include respond(tab-land) {
+            margin: 0;
+            width: 16rem;
+            font-size: 1.2rem;
+        }
     }
     &__time {
         width: 10rem;
         font-size: 1.6rem;
         margin-left: 3rem;
+
+        @include respond(tab-land) {
+            margin: 0;
+            font-size: 1.2rem;
+        }
     }
     &__exp {
         margin-left: 3rem;
         font-size: 1.6rem;
+        
+        @include respond(tab-land) {
+            margin: 0;
+            font-size: 1.2rem;
+            width:5rem;
+        }
     }
 }
 

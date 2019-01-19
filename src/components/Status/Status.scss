@@ -5,11 +5,23 @@
     width: 75rem;
     margin: 0 auto;
     
+    @include respond(tab-land) {
+        width:60rem;
+    }
+    @include respond(tab-port) {
+        width:45rem;
+    }
 
     &__name {
         font-size: 4rem;
         margin-left: -4rem;
         color: $color-grey-lightest;
+        @include respond(tab-land) {
+            font-size: 3rem;
+        }
+        @include respond(tab-port) {
+            font-size: 2rem;
+        }
     }
     &__icons {
         display: flex;
@@ -22,6 +34,14 @@
             width: 6rem;
             height: 6rem;
             margin-bottom: -1rem;
+            @include respond(tab-land) {
+                width: 5rem;
+                height: 5rem;
+            }
+            @include respond(tab-port) {
+                width: 4rem;
+                height: 4rem;
+            }
         }
     }
 }

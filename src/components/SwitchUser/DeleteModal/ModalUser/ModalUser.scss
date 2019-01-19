@@ -1,11 +1,23 @@
 .ModalUser {
-
     display: flex;
     margin: 2rem;
+    cursor: pointer;
+
     &__profile {
         width: 9rem;
         height: 12rem;
         margin-left: 5rem;
+        @include respond(tab-land) {
+            width: 8rem;
+            height: 10rem;
+            margin-left: 2rem;
+        }
+        @include respond(tab-port) {
+            
+        }
+        @include respond(phone) {
+            
+        }
     }
     &__name {
         color: $color-grey;
@@ -13,12 +25,35 @@
         margin-left: 7rem;
         line-height: 10rem;
         width: 15rem;
+
+        @include respond(tab-land) {
+            font-size: 3rem;
+            margin-left: 4rem;
+        }
+        @include respond(tab-port) {
+            font-size: 2.4rem;
+            margin-left: 3rem;
+        }
+        @include respond(phone) {
+            font-size: 2rem;
+        }
     }
     &__level {
         color: $color-red;
         font-size: 2rem;
         margin-left: 5rem;
         line-height: 10rem;
+        width: 10rem;
+
+        @include respond(tab-land) {
+            margin-left: 3rem;
+        }
+        @include respond(tab-port) {
+            margin-left: 2rem;
+        }
+        @include respond(phone) {
+            
+        }
     }
     &__selected {
         border: 2px solid $color-gold;

@@ -8,6 +8,23 @@
     color: $color-grey;
     font-size: 2rem;
     
+    @include respond(tab-land) {
+        width:18rem;
+        height:30rem;
+        margin: 0 auto;
+    }
+    @include respond(tab-port) {
+        width:16rem;
+        height:27rem;
+        margin: 0 auto;
+    }
+    @include respond(phone) {
+        width:15rem;
+        height:23rem;
+        margin: 0 auto;
+    }
+    
+
     &__favorites {
         display: flex;
         justify-content: space-around;
@@ -17,15 +34,39 @@
         text-decoration: none;
         color: white;
         font-size: 3rem;
+
+        @include respond(tab-port) {
+            font-size: 2.4rem;
+        }
+        @include respond(phone) {
+            font-size: 1.6rem;
+        }
+        
     }
    
     &__profile {
         width: 16rem;
         height: 22rem;
+        
+        @include respond(tab-land) {
+            width: 12rem;
+            height: 16rem;
+        }
+        @include respond(phone) {
+            width: 8rem;
+            height: 12rem;
+        }
+        
+        
     }
     &__icon {
         width:6rem;
         height:6rem;
+        @include respond(tab-land) {
+            width: 4rem;
+            height: 4rem;
+        }
+        
     }
     &__selected {
         background-color: rgba($color-grey-medium,1);

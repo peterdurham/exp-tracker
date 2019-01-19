@@ -6,6 +6,12 @@
     background-color: $color-grey-lightest;
     padding: 2rem;
 
+    @include respond(tab-land) {
+        width:80rem;
+    }
+    @include respond(tab-port) {
+        width:60rem;
+    }
 
     &__forest {
         border-left: 1rem solid $color-black;
@@ -28,7 +34,8 @@
         height: 14rem;
         border-top: 1rem solid $color-black;
         border-bottom: 1rem solid $color-black;
-        
+        cursor: pointer;
+         
         &--image {
             width: 16rem;
             height: 12rem;

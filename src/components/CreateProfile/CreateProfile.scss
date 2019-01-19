@@ -27,6 +27,16 @@
         margin-left: auto;
         margin-right: auto;
         margin-top: 2rem;
+
+        @include respond(tab-land) {
+            width: 80rem; //1 rem = 9px 9/16
+        }
+        @include respond(tab-port) {
+            width: 70rem; //1 rem = 9px 9/16
+        }
+        @include respond(phone) {
+            width: 60rem; //1 rem = 9px 9/16
+        }
     }
     &__header {
         background-color: rgba($color-grey-darkest,.9);
@@ -76,7 +86,7 @@
         font-size: 2rem;
         border: 2px solid $color-gold;
         background-color: $color-grey-darkest;
-        padding: .5rem 2rem;
+        padding: 0 2rem;
         border-radius: 10rem;
         margin-top: 1rem;
         display:inline-block;
@@ -99,6 +109,12 @@
         border-bottom: 1px solid $color-gold;
         margin: 0 10rem;
         background-color: rgba($color-black,.5);
+
+        
+        @include respond(tab-port) {
+            margin: 0 5rem; 
+        }
+        
     }
     &__images {
         margin-top: 1rem;
@@ -110,9 +126,13 @@
         width: 60rem;
         margin: 1rem auto;
         
+        @include respond(phone) {
+            width: 40rem;
+        }
         img {
             width: 6rem;
             height: 6rem;
+            cursor: pointer;
         }
     }
     &__activities {
@@ -123,6 +143,7 @@
         img {
             width: 6rem;
             height: 6rem;
+            cursor: pointer;
         }
     }
     &__natures {
@@ -130,10 +151,13 @@
         justify-content: space-between;
         width: 60rem;
         margin: 1rem auto;
-        
+        @include respond(phone) {
+            width: 40rem;
+        }
         img {
             width: 6rem;
             height: 6rem;
+            cursor: pointer;
         }
     }
 }
@@ -141,6 +165,12 @@
 .profile-image {
     width: 12rem;
     height: 15rem;
+    cursor: pointer;
+
+    @include respond(phone) {
+        width: 9rem;
+        height: 12rem; //1 rem = 9px 9/16
+    }
 }
 
 

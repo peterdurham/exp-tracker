@@ -7,9 +7,20 @@
     padding: 2rem;
     padding-bottom: 4rem;   
 
+    @include respond(tab-land) {
+        width:80rem;
+    }
+    @include respond(tab-port) {
+        width:60rem;
+    }
+
     &__columns {
         display: flex;
         justify-content: space-around;
+       
+        @include respond(tab-port) {
+            flex-direction: column;
+        }
     }
     &__tasks {
         margin: 0 auto;

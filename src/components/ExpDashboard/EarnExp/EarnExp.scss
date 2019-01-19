@@ -5,4 +5,12 @@
     margin: 0 auto;
     background-color: $color-grey-lightest;
     padding: 2rem 4rem;
+
+    
+    @include respond(tab-land) {
+        width:80rem;
+    }
+    @include respond(tab-port) {
+        width:60rem;
+    }
 }
