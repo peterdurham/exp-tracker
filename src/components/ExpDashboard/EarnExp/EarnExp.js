@@ -6,8 +6,7 @@ const EarnExp = ({ completeTask, optionSelected, highlightOption, triggerAnimati
     const tasks = ['coding', 'read', 'socialize', 'weights', 'meetup', 'journalling', 'meditation', 'pairprogramming', 'completeproject', 'brushteeth', 'paybills', 'plannewproject', 'cookfood', 'cleanroom', 'deployproject', 'running'];
       
     return(
-        <div>
-            <div className="EarnExp__tasks">
+        <div className="EarnExp">
             {tasks.map((task) => <Task
                 key={task}
                 taskName={task}
@@ -17,8 +16,6 @@ const EarnExp = ({ completeTask, optionSelected, highlightOption, triggerAnimati
                 highlightOption={highlightOption}
                 triggerAnimation={triggerAnimation}
             />)}
-            </div>
-            
         </div>
     );
 }

@@ -166,9 +166,26 @@ class App extends Component {
   deleteUserHandler = (index) => {
     let users = [...this.state.users]
     users.splice(index, 1);
-    this.setState(() => ({ users }))
-    
-    
+    this.setState(() => ({ users })) 
+  }
+  convertTimeHandler = (ms) => {
+    let date = new Date()
+    let difference = date.getTime() - ms;
+    let timeCompleted;
+    if(difference < (1000*60*60*24)) {
+      if(Math.ceil(difference/(1000*60*60)) === 1) {
+        timeCompleted = `${Math.ceil(difference/(1000*60*60))} hour ago`
+      } else {
+        timeCompleted = `${Math.ceil(difference/(1000*60*60))} hours ago`
+      }
+    } else {
+      if(Math.floor(difference/(1000*60*60*24)) === 1) {
+        timeCompleted = `${Math.floor(difference/(1000*60*60*24))} day ago`
+      } else {
+        timeCompleted = `${Math.floor(difference/(1000*60*60*24))} days ago`
+      }
+    }
+    return timeCompleted
   }
   
   render() {
@@ -216,6 +233,7 @@ class App extends Component {
               activeAnimation = {this.state.activeAnimation}
               triggerAnimation = {this.triggerAnimationHandler}
               animationExp = {this.state.animationExp}
+              convertTime = {this.convertTimeHandler}
             />
           }
           />

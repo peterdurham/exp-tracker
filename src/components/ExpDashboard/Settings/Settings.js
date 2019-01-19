@@ -3,7 +3,7 @@ import '../../../assets/sass/main.scss';
 
 const Settings = (props) => {
     return(
-        <div>
+        <div className="Settings">
             Settings
             <div>Theme: </div>
             <div>

@@ -3,23 +3,32 @@
     background-size: cover;
     padding-top:2rem;
     height: 100vh;
-    
+
+
+    &__active {
+        
+        border: 2px solid $color-gold;
+        
+    }
     &__status {
         display: flex;
         width: 100rem;
         margin: 0 auto;
+        margin-bottom: 2rem;
         background-color: $color-grey-lightest;
     }
     &__nav {
-        background-color: rgba($color-grey-darkest,.9);
+        background-color: rgba($color-grey-darkest,.95);
         width: 100rem;
         margin: 0 auto;
+        height: 6rem;
+        line-height: 6rem;
     }
     &__link {
         text-decoration: none;
         color: $color-grey-lightest;
-        font-size: 2.4rem;
-        padding: 2rem;
+        font-size: 2rem;
+        padding: 1rem;
     }
     &__menulink {
         text-decoration: none;
@@ -40,8 +49,9 @@
         background-color: $color-green;
     }
     &__selected {
-        border: 4px solid $color-gold;
-        background-color: $color-green;
+        
+        border: 1px solid white;
+        border-radius: 2px;
     }
     
 }

@@ -1,0 +1,20 @@
+.TaskHistory {
+    display: flex;
+    flex-direction: column;
+    width: 100rem;
+    margin: 0 auto;
+    background-color: $color-grey-lightest;
+    padding: 2rem;
+    padding-bottom: 4rem;   
+
+    &__tasks {
+        margin: 0 auto;
+    }
+    &__label {
+        margin: 0 auto;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        margin-top: -1rem;
+    }
+    
+}

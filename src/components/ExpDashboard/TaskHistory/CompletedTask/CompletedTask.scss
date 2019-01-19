@@ -1,0 +1,26 @@
+.CompletedTask {
+    display: flex;
+    background-color: white;
+    padding: 0 2rem;
+    
+    &__image {
+        width: 3rem;
+        height: 3rem;
+    }
+    &__label {
+        font-size: 1.6rem;
+        margin-left: 1rem;
+        width: 20rem;
+    }
+    &__time {
+        width: 20rem;
+        font-size: 1.6rem;
+    }
+    &__exp {
+        font-size: 1.6rem;
+    }
+}
+
+.CompletedTask:not(:last-child) {
+    border-bottom: 1px solid $color-grey-medium;
+}

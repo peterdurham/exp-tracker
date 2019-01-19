@@ -1,0 +1,17 @@
+.Achievements {
+    
+    width: 100rem;
+    margin: 0 auto;
+    background-color: $color-grey-lightest;
+    padding: 4rem;
+    padding-top: 2rem;
+    padding-left: 8rem;
+    &__label {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    &__tasks {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
