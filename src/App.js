@@ -57,18 +57,22 @@ class App extends Component {
   }
   createNewProfileHandler = () => {
     if(this.state.users.length < 3) {
-      const user = {
-        name: this.state.nameInput,
-        favoriteFood: this.state.favoritesSelected.food,
-        favoriteActivity: this.state.favoritesSelected.activity,
-        favoriteNature: this.state.favoritesSelected.nature,
-        profileImage: this.state.favoritesSelected.image,
-        tasksCompleted: [],
-        exp: 0,
-      }
-      const users = [...this.state.users];
-      users.push(user);
-      this.setState(() => ({ activeUser: user, users, creatingProfile: false }))
+      
+        const user = {
+          name: this.state.nameInput,
+          favoriteFood: this.state.favoritesSelected.food,
+          favoriteActivity: this.state.favoritesSelected.activity,
+          favoriteNature: this.state.favoritesSelected.nature,
+          profileImage: this.state.favoritesSelected.image,
+          tasksCompleted: [],
+          levelPercentage: 0,
+          level: 0,
+          exp: 0,
+        }
+        const users = [...this.state.users];
+        users.push(user);
+        this.setState(() => ({ activeUser: user, users, creatingProfile: false, nameInput: '' }))
+      
     }
     
   }
@@ -166,7 +170,8 @@ class App extends Component {
   deleteUserHandler = (index) => {
     let users = [...this.state.users]
     users.splice(index, 1);
-    this.setState(() => ({ users })) 
+    
+    this.setState(() => ({ users, activeUser: {} })) 
   }
   convertTimeHandler = (ms) => {
     let date = new Date()
@@ -174,7 +179,7 @@ class App extends Component {
     let timeCompleted;
     if(difference < (1000*60*60*24)) {
       if(Math.ceil(difference/(1000*60*60)) === 1) {
-        timeCompleted = `${Math.ceil(difference/(1000*60*60))} hour ago`
+        timeCompleted = `< ${Math.ceil(difference/(1000*60*60))} hour ago`
       } else {
         timeCompleted = `${Math.ceil(difference/(1000*60*60))} hours ago`
       }
@@ -187,6 +192,9 @@ class App extends Component {
     }
     return timeCompleted
   }
+  clearNameInput = () => {
+    this.setState(() => ({ nameInput: '' }))
+  }
   
   render() {
     return (
@@ -196,7 +204,7 @@ class App extends Component {
             exact path="/" 
             render={(props) => <MainMenu {...props} 
                 activeUser = {this.state.activeUser}
-                
+                users = {this.state.users}
                 /> 
               }
           />
@@ -208,6 +216,8 @@ class App extends Component {
               bindNameInput = {this.bindNameInputHandler}
               nameInput = {this.state.nameInput}
               createNewProfile = {this.createNewProfileHandler}
+              clearNameInput = {this.clearNameInput}
+              users={this.state.users}
               />
             
             }

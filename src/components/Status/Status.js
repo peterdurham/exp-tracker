@@ -13,9 +13,15 @@ import wizard from '../../assets/images/profile/wizard.jpg';
 const Status = ({ activeUser, favoriteFood, favoriteActivity, favoriteNature, optionSelected, activeAnimation, animationExp }) => {
     let img;
     if(activeUser.profileImage === 'bard') {
-        img = (<img src={bard} alt='bard' />)
+        img = (<img src={bard} alt='bard' className='Status__profile--image'/>)
     } else if(activeUser.profileImage === 'sorceress') {
         img = (<img src={sorceress} alt='sorceress' className='Status__profile--image'/>)
+    } else if(activeUser.profileImage === 'ranger') {
+        img = (<img src={ranger} alt='ranger' className='Status__profile--image'/>)
+    } else if(activeUser.profileImage === 'monk') {
+        img = (<img src={monk} alt='monk' className='Status__profile--image'/>)
+    } else if(activeUser.profileImage === 'wizard') {
+        img = (<img src={wizard} alt='wizard' className='Status__profile--image'/>)
     }
     return (
         <div className={optionSelected === 'status' ? 'Status__selected Status': 'Status'}>

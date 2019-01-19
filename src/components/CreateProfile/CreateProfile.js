@@ -117,15 +117,17 @@ class CreateProfile extends Component {
                             <img onClick={()=>selectFavorite('nature', 'volcano')} onMouseOver={()=>this.selectOption('volcano')} onMouseOut={()=>this.unselectOption('volcano')} className={(selectedNature === 'volcano' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'volcano' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={volcano} alt="volcano" />
                             <img onClick={()=>selectFavorite('nature', 'desert')} onMouseOver={()=>this.selectOption('desert')} onMouseOut={()=>this.unselectOption('desert')} className={(selectedNature === 'desert' ? 'CreateProfile__favorite option' : 'option')+' '+ (this.state.optionSelected === 'desert' ? 'CreateProfile__selected profile-image' : 'profile-image')} src={desert} alt="desert" />
                         </div>
-    
+
+                        
                         <Link 
                             to="/exp"
                             className={this.state.optionSelected === 'createprofile' ? "CreateProfile__button CreateProfile__create" : "CreateProfile__button"}
                             onClick={createNewProfile}
                             onMouseOver={()=>this.selectOption('createprofile')}
-                            >Create Profile
+                        >Create Profile
                         </Link>
                         <br/>
+                        
                         <Link 
                             to="/"
                             className={this.state.optionSelected === 'mainmenu' ? "CreateProfile__button CreateProfile__mainmenu" : "CreateProfile__button"}

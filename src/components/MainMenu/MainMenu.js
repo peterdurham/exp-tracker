@@ -6,10 +6,10 @@ import '../../assets/sass/main.scss';
 
 class MainMenu extends Component {
     state = {
-        optionSelected: 'newProfile',
+        optionSelected: 'continue',
         
     }
-
+    
     highlightOption = (option) => {
         this.setState(() => ({ optionSelected: option }))
     }
@@ -30,20 +30,22 @@ class MainMenu extends Component {
             newOption = 'switchUser'
         } else if(key==='down' && optionSelected === 'switchUser') {
             newOption = 'switchUser'
-        } else if(key==='enter' && optionSelected === 'newProfile') {
+        } else if(key==='enter' && optionSelected === 'newProfile' && this.props.users.length < 3) {
             this.props.history.push('/create-profile');
         } else if(key==='enter' && optionSelected === 'continue') {
             this.props.history.push('/exp');
         } else if(key==='enter' && optionSelected === 'switchUser') {
             this.props.history.push('/switch-user');
-        } 
+        } else if(key==='enter' && optionSelected === 'newProfile' && this.props.users.length === 3) {
+            newOption = 'newProfile'
+        }
         this.setState(() => ({ optionSelected: newOption }))
         
     }
 
 
     render() {
-        const { activeUser } = this.props;
+        const { activeUser, users } = this.props;
         
         
         
@@ -58,20 +60,24 @@ class MainMenu extends Component {
                 
                     <ul>
                         <li>
-                            <Link 
+                            {(users.length < 3) ? <Link 
                                 to="/create-profile"
                                 onMouseOver={()=>this.highlightOption('newProfile')}
                                 className={this.state.optionSelected==='newProfile' ? 'MainMenu__option MainMenu__selected' : 'MainMenu__option'}
                                 >New Profile
-                            </Link>
+                            </Link> : null 
+                            }
+                            
                         </li>
                         <li>
-                            <Link
+                            {(users.length > 0) ? <Link
                                 to="/exp"
                                 onMouseOver={()=>this.highlightOption('continue')}
                                 className={this.state.optionSelected==='continue' ? 'MainMenu__option MainMenu__selected' : 'MainMenu__option'}
                                 >Continue as {activeUser.name}
-                            </Link>
+                            </Link> : null
+                            }
+                            
                         </li>
                         <li>
                             <Link 
