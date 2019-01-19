@@ -17,7 +17,7 @@ import cleanroom from '../../assets/images/tasks/cleanroom.png';
 import deployproject from '../../assets/images/tasks/deployproject.png';
 import running from '../../assets/images/tasks/running.png';
 
-const Task = ({ taskName, completeTask, optionSelected }) => {
+const Task = ({ taskName, completeTask, optionSelected, highlightOption }) => {
     let image;
     let label;
     if(taskName === 'coding') {
@@ -74,7 +74,7 @@ const Task = ({ taskName, completeTask, optionSelected }) => {
     return (
         <div onClick={()=>completeTask(taskName)} 
         className={optionSelected === taskName ? 'Task__selected Task': 'Task'}
-        
+        onMouseOver={()=>highlightOption(taskName)}
         >
             {image}
             {label}

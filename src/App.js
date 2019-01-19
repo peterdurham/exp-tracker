@@ -29,9 +29,13 @@ class App extends Component {
     try {
         const jsonUsers = localStorage.getItem('users');
         const jsonActive = localStorage.getItem('active')
+        const jsonTheme = localStorage.getItem('theme')
+        
         const users = JSON.parse(jsonUsers);
         const active = JSON.parse(jsonActive)
-
+        if(jsonTheme === 'ocean' || jsonTheme === 'mountain') {
+          this.setState(() => ({ theme: jsonTheme }))
+        }
         if(users){
             this.setState(()=>({ users, activeUser: active }))
         }
@@ -55,10 +59,13 @@ class App extends Component {
         localStorage.setItem('active', jsonActive);
       } 
     }
+    if(prevState.theme !== this.state.theme) {
+      localStorage.setItem('theme', this.state.theme);
+    }
   }
   createNewProfileHandler = () => {
     if(this.state.users.length < 3) {
-      
+      if(this.state.nameInput !== '' && this.state.nameInput !== this.state.users[0].name && this.state.nameInput !== this.state.users[1].name) {
         const user = {
           name: this.state.nameInput,
           favoriteFood: this.state.favoritesSelected.food,
@@ -73,6 +80,9 @@ class App extends Component {
         const users = [...this.state.users];
         users.push(user);
         this.setState(() => ({ activeUser: user, users, creatingProfile: false, nameInput: '' }))
+      }
+       
+        
       
     }
     

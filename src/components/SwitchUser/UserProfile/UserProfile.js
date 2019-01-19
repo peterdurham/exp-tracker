@@ -32,7 +32,7 @@ import volcano from '../../../assets/images/nature/volcano.png';
 import desert from '../../../assets/images/nature/desert.png';
 
 
-const UserProfile = ({switchActiveUser, name, favoriteFood, favoriteActivity, favoriteNature, profileImage, index, selectProfile, optionSelected }) => {
+const UserProfile = ({switchActiveUser, name, favoriteFood, favoriteActivity, favoriteNature, profileImage, index, selectProfile, optionSelected, level }) => {
     let profile;
     let food; 
     let activity;
@@ -105,7 +105,10 @@ const UserProfile = ({switchActiveUser, name, favoriteFood, favoriteActivity, fa
                     onClick={() => switchActiveUser(name)}
                     to="/exp">
 
-                    <div className="UserProfile__name">{name}</div>
+                    
+                      <div className="UserProfile__name">{name}</div> 
+                      
+                    
                     {profile}
                 
                     <div className="UserProfile__favorites">

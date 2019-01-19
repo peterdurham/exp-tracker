@@ -10,7 +10,6 @@ const EarnExp = ({ completeTask, optionSelected, highlightOption, triggerAnimati
             {tasks.map((task) => <Task
                 key={task}
                 taskName={task}
-                
                 completeTask={completeTask}
                 optionSelected={optionSelected}
                 highlightOption={highlightOption}

@@ -6,8 +6,6 @@ import '../../assets/sass/main.scss';
 import DeleteModal from './DeleteModal/DeleteModal';
 import UserProfile from './UserProfile/UserProfile';
 
-import logo from '../../assets/images/crystal.jpg';
-
 class SwitchUser extends Component {
     state = {
         optionSelected: '0',
@@ -77,10 +75,12 @@ class SwitchUser extends Component {
                     handleKeys={['up', 'down', 'left', 'right', 'enter']}
                     onKeyEvent={(key, e) => this.keyPress(key)}
                 />
-                <img className="SwitchUser__logo" src={logo} alt="logo"/>
+                
                 
                 <div className="SwitchUser__container">
-                    <h1 className="SwitchUser__header">EXP -- Switch User</h1>
+                    <h1 className="SwitchUser__header">
+                        EXP -- Switch User
+                    </h1>
                     <div className="SwitchUser__main">
                         
                         <div className="SwitchUser__main--text">Select a user:</div>
@@ -95,6 +95,7 @@ class SwitchUser extends Component {
                                 favoriteActivity = {users[0].favoriteActivity}
                                 favoriteNature = {users[0].favoriteNature}
                                 profileImage = {users[0].profileImage}
+                                level = {users[0].level}
                                 name={users[0].name}
                                 switchActiveUser = {switchActiveUser}
                                 selectProfile = {this.selectProfileHandler}
@@ -108,6 +109,7 @@ class SwitchUser extends Component {
                                 favoriteActivity = {users[1].favoriteActivity}
                                 favoriteNature = {users[1].favoriteNature}
                                 profileImage = {users[1].profileImage}
+                                level = {users[1].level}
                                 name={users[1].name}
                                 switchActiveUser = {switchActiveUser}
                                 selectProfile = {this.selectProfileHandler}
@@ -121,6 +123,7 @@ class SwitchUser extends Component {
                                 favoriteActivity = {users[2].favoriteActivity}
                                 favoriteNature = {users[2].favoriteNature}
                                 profileImage = {users[2].profileImage}
+                                level = {users[2].level}
                                 name={users[2].name}
                                 switchActiveUser = {switchActiveUser}
                                 selectProfile = {this.selectProfileHandler}

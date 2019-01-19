@@ -130,7 +130,7 @@ class ExpDashboard extends Component {
                 </div>
                 
                 <div className="ExpDashboard__nav">
-                    <Link to="/exp/earn-exp" className={(this.state.optionSelected === 'earn' ? 'ExpDashboard__selected ExpDashboard__link': 'ExpDashboard__link')+' '+(this.props.location.pathname ==="/exp/earn-exp" ? "ExpDashboard__active" : "")}>Earn</Link>
+                    <Link to="/exp/earn-exp" className={(this.state.optionSelected === 'earn' ? 'ExpDashboard__selected ExpDashboard__link': 'ExpDashboard__link')+' '+(this.props.location.pathname ==="/exp/earn-exp" ? "ExpDashboard__active" : "")} >Earn</Link>
                     <Link to="/exp/task-history" className={(this.state.optionSelected === 'history' ? 'ExpDashboard__selected ExpDashboard__link': 'ExpDashboard__link')+' '+(this.props.location.pathname ==="/exp/task-history" ? "ExpDashboard__active" : "")}>History</Link>
                     <Link to="/exp/achievements" className={(this.state.optionSelected === 'achievements' ? 'ExpDashboard__selected ExpDashboard__link': 'ExpDashboard__link')+' '+(this.props.location.pathname ==="/exp/achievements" ? "ExpDashboard__active" : "")}>Achievements</Link>
                     <Link to="/exp/settings" className={(this.state.optionSelected === 'settings' ? 'ExpDashboard__selected ExpDashboard__link': 'ExpDashboard__link')+' '+(this.props.location.pathname ==="/exp/settings" ? "ExpDashboard__active" : "")}>Settings</Link>
@@ -148,7 +148,6 @@ class ExpDashboard extends Component {
                         optionSelected = {this.state.optionSelected}
                         highlightOption = {this.highlightOption}
                         triggerAnimation = {triggerAnimation}
-                        
                         />
                     }
                     />

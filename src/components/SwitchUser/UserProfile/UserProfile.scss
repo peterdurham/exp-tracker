@@ -1,9 +1,9 @@
 .UserProfile {
-    padding: 10px;
+    padding: 2rem;
     border-radius: .8rem;
     background-color: rgba(38,38,38,.9);
-    width:310px;
-    height:490px;
+    width:24rem;
+    height:38rem;
     text-decoration: none;
     color: $color-grey;
     font-size: 2rem;
@@ -11,30 +11,29 @@
     &__favorites {
         display: flex;
         justify-content: space-around;
-        border-bottom: 1px solid grey;
-        
     }
+  
     &__name {
         text-decoration: none;
         color: white;
         font-size: 3rem;
-
     }
+   
     &__profile {
-        width:225px;
-        height:300px;
+        width: 16rem;
+        height: 22rem;
     }
     &__icon {
-        width:7rem;
-        height:7rem;
+        width:6rem;
+        height:6rem;
     }
     &__selected {
-        
         background-color: rgba($color-grey-medium,1);
     }
     &__disabled {
         border: 1px solid grey;
     }
+    
 }
 .UserProfile:not(:last-child) {
     margin-right: 4rem;

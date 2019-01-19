@@ -2,21 +2,24 @@
     display: flex;
     background-color: white;
     padding: 0 2rem;
-    
+    height: 4rem;
     &__image {
-        width: 3rem;
-        height: 3rem;
+        width: 4rem;
+        height: 4rem;
     }
     &__label {
         font-size: 1.6rem;
-        margin-left: 1rem;
-        width: 20rem;
+        margin-left: .5rem;
+        width: 12rem;
+        margin-left: 3rem;
     }
     &__time {
-        width: 20rem;
+        width: 10rem;
         font-size: 1.6rem;
+        margin-left: 3rem;
     }
     &__exp {
+        margin-left: 3rem;
         font-size: 1.6rem;
     }
 }

@@ -6,20 +6,20 @@
     max-height: 100%;
 
     &__forest {
-        background: url('../../assets/images/forest4.jpg');
+        background: url('../../assets/images/backgrounds/forest4.jpg');
         background-size: cover;
         background-repeat: repeat;
         background-position: center;
         
     }
     &__ocean {
-        background: url('../../assets/images/ocean4.jpg');
+        background: url('../../assets/images/backgrounds/ocean4.jpg');
         background-size: cover;
         background-position: center;
         
     }
     &__mountains {
-        background: url('../../assets/images/mountains4.jpg');
+        background: url('../../assets/images/backgrounds/mountains4.jpg');
         background-size: cover;
         background-position: center;
         
@@ -47,6 +47,7 @@
         color: $color-grey-lightest;
         font-size: 2rem;
         padding: 1rem;
+        margin-right: 1rem;
     }
     &__menulink {
         text-decoration: none;
