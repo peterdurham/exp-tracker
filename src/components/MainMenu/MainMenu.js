@@ -18,17 +18,11 @@ class MainMenu extends Component {
     const optionSelected = this.state.optionSelected;
     let newOption;
 
-    if (key === "up" && optionSelected === "newProfile") {
+    if (key === "up" && (optionSelected === "newProfile" || optionSelected === "continue")) {
       newOption = "newProfile";
-    } else if (key === "up" && optionSelected === "continue") {
-      newOption = "newProfile";
-    } else if (key === "up" && optionSelected === "switchUser") {
+    } else if ((key === "up" && optionSelected === "switchUser") || (key === "down" && optionSelected === "newProfile")) {
       newOption = "continue";
-    } else if (key === "down" && optionSelected === "newProfile") {
-      newOption = "continue";
-    } else if (key === "down" && optionSelected === "continue") {
-      newOption = "switchUser";
-    } else if (key === "down" && optionSelected === "switchUser") {
+    } else if ((key === "down" && optionSelected === "continue")||(key === "down" && optionSelected === "switchUser")) {
       newOption = "switchUser";
     } else if (
       key === "enter" &&

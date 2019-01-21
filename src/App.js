@@ -73,11 +73,7 @@ class App extends Component {
   }
   createNewProfileHandler = () => {
     if (this.state.users.length < 3) {
-      if (
-        this.state.nameInput !== "" &&
-        this.state.nameInput !== this.state.users[0].name &&
-        this.state.nameInput !== this.state.users[1].name
-      ) {
+      
         const user = {
           name: this.state.nameInput,
           favoriteFood: this.state.favoritesSelected.food,
@@ -97,7 +93,9 @@ class App extends Component {
           creatingProfile: false,
           nameInput: ""
         }));
-      }
+      
+        
+      
     }
   };
 
