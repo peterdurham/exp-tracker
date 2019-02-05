@@ -81,7 +81,6 @@ class CreateProfile extends Component {
                   : "CreateProfile__input"
               }
             />
-
             <div className="CreateProfile__label">Choose profile image</div>
             <div className="CreateProfile__images">
               <img
