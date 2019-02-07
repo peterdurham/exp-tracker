@@ -1,4 +1,4 @@
-# Exp-Tracker
+# :star2: Exp-Tracker
 Task tracking app in **React** that rewards users with experience points.  
   
 Application stores task history, accomplishments, and user settings.  
